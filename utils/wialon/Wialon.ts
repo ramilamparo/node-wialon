@@ -1,44 +1,23 @@
 import axios from "axios";
 import FormData from "form-data";
 
-import { Unit } from "./unit";
-import { Core } from "./core";
-import { Messages } from "./messages";
-import { Utils } from "./utils";
 import {
-	TokenLoginResponse,
-	TokenLoginParams,
 	Params,
-	SVC,
 	Response,
+	SVC,
+	TokenLoginParams,
+	TokenLoginResponse,
 	WialonError
 } from "./";
+import { Core } from "./core";
+import { Messages } from "./messages";
+import { Unit } from "./unit";
+import { Utils } from "./utils";
 
 export const defaultHost = "https://hst-api.wialon.com";
 
 export class Wialon {
-	protected constructor(
-		protected user: TokenLoginResponse,
-		public host: string = defaultHost
-	) {}
-
-	get Unit() {
-		return new Unit(this.user, this.host);
-	}
-
-	get Core() {
-		return new Core(this.user, this.host);
-	}
-
-	get Messages() {
-		return new Messages(this.user, this.host);
-	}
-
-	get Utils() {
-		return new Utils(this.user, this.host);
-	}
-
-	static login = async (
+	public static login = async (
 		params: TokenLoginParams,
 		host: string = defaultHost
 	) => {
@@ -47,7 +26,7 @@ export class Wialon {
 		return w;
 	};
 
-	private static buildUrl = <T extends SVC>(
+	public static buildUrl = <T extends SVC>(
 		url: string,
 		svc: T,
 		params?: Params[T] | null,
@@ -56,7 +35,7 @@ export class Wialon {
 		let composedUrl = url;
 		if (svc || params || sid) {
 			let firstArg = true;
-			let indexArg = composedUrl.length - 1;
+			const indexArg = composedUrl.length - 1;
 			composedUrl += "?";
 			if (svc) {
 				firstArg = false;
@@ -77,15 +56,19 @@ export class Wialon {
 		return composedUrl;
 	};
 
-	static execute = async <T extends SVC>(
+	public static execute = async <T extends SVC>(
 		svc: T,
 		params?: Params[T] | null,
 		sid?: string | null,
 		url: string = defaultHost
 	): Promise<Response[T] | never> => {
 		const formData = new FormData();
-		params && formData.append("params", JSON.stringify(params));
-		sid && formData.append("sid", sid);
+		if (params) {
+			formData.append("params", JSON.stringify(params));
+		}
+		if (sid) {
+			formData.append("sid", sid);
+		}
 
 		const res = await axios.post<Response[T]>(
 			Wialon.buildUrl(url, svc),
@@ -96,8 +79,31 @@ export class Wialon {
 			}
 		);
 
-		if (res.data.error) throw new WialonError(res.data.error);
+		if (res.data.error) {
+			throw new WialonError(res.data.error);
+		}
 
 		return res.data;
 	};
+
+	protected constructor(
+		protected user: TokenLoginResponse,
+		public host: string = defaultHost
+	) {}
+
+	public get Unit() {
+		return new Unit(this.user, this.host);
+	}
+
+	public get Core() {
+		return new Core(this.user, this.host);
+	}
+
+	public get Messages() {
+		return new Messages(this.user, this.host);
+	}
+
+	public get Utils() {
+		return new Utils(this.user, this.host);
+	}
 }

@@ -2,7 +2,7 @@ import axios from "axios";
 import { Wialon } from "..";
 
 export class Utils extends Wialon {
-	getUnits = ({ flags = 1 }) => {
+	public getUnits = ({ flags = 1 }) => {
 		return Wialon.execute(
 			"core/search_items",
 			{
@@ -14,7 +14,7 @@ export class Utils extends Wialon {
 					propType: "property"
 				},
 				force: 1,
-				flags: flags,
+				flags,
 				from: 0,
 				to: 0
 			},
@@ -22,7 +22,7 @@ export class Utils extends Wialon {
 			this.host
 		);
 	};
-	getAddress = async (
+	public getAddress = async (
 		{ lat, lng }: { lat: number; lng: number },
 		flags = 54321
 	) => {
@@ -30,7 +30,7 @@ export class Utils extends Wialon {
 		formData.append("uid", String(this.user.user.id));
 		formData.append("sid", this.user.eid);
 		formData.append("flags", String(flags));
-		formData.append("coords", JSON.stringify([{ lat: lat, lon: lng }]));
+		formData.append("coords", JSON.stringify([{ lat, lng }]));
 
 		const res = await axios.post(
 			`https://geocode-maps.wialon.com/${this.host.replace(

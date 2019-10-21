@@ -1,19 +1,17 @@
 import axios from "axios";
 import FormData from "form-data";
-import { Wialon, Params, WialonError, WialonBatchError } from "..";
-
+import { Params, Wialon, WialonBatchError, WialonError } from "..";
 import {
 	Params as CoreBatchParams,
 	Response as CoreBatchResponse
 } from "./batch";
-
 import {
 	Params as CoreSearchItemsParams,
 	Response as CoreSearchItemsResponse
 } from "./search_items";
 
 export class Core extends Wialon {
-	searchItems = (params: Params["core/search_items"]) => {
+	public searchItems = (params: Params["core/search_items"]) => {
 		return Wialon.execute(
 			"core/search_items",
 			params,
@@ -22,7 +20,7 @@ export class Core extends Wialon {
 		);
 	};
 
-	batch = async <T extends keyof Omit<Params, "core/batch">>(
+	public batch = async <T extends keyof Omit<Params, "core/batch">>(
 		params: CoreBatchParams<T>
 	): Promise<CoreBatchResponse<T>> => {
 		const formData = new FormData();
@@ -37,10 +35,11 @@ export class Core extends Wialon {
 				timeout: 0
 			}
 		);
-		const errors = res.data.reduce((errors: WialonError[], value) => {
+		const errors = res.data.reduce((batchErrors: WialonError[], value) => {
 			if (value && value.error) {
+				batchErrors.push(new WialonError(value));
 			}
-			return errors;
+			return batchErrors;
 		}, []);
 		if (errors.length) {
 			throw new WialonBatchError(errors);

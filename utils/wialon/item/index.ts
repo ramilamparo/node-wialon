@@ -4,7 +4,7 @@ import {
 	Response as ItemUpdateCustomFieldResponse
 } from "./update_custom_field";
 export class Item extends Wialon {
-	updateCustomField(params: ItemUpdateCustomFieldParams) {
+	public updateCustomField(params: ItemUpdateCustomFieldParams) {
 		return Wialon.execute(
 			"item/update_custom_field",
 			params,

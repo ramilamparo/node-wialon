@@ -5,7 +5,7 @@ import {
 } from "./get_vin_info";
 
 export class Unit extends Wialon {
-	getVinInfo = (params: UnitGetVinInfoParams) => {
+	public getVinInfo = (params: UnitGetVinInfoParams) => {
 		return Wialon.execute(
 			"unit/get_vin_info",
 			params,

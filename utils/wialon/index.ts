@@ -1,23 +1,42 @@
-import { WialonError, WialonBatchError, RemoteAPIError } from "./WialonError";
-
-import { TokenLoginParams, TokenLoginResponse } from "./token";
-import { CoreSearchItemsParams, CoreSearchItemsResponse } from "./core";
 import {
-	MessagesLoadIntervalParams,
-	MessagesLoadIntervalResponse
-} from "./messages";
-import {
-	MessagesDeleteMessageParams,
-	MessagesDeleteMessageResponse
-} from "./messages";
-import { CoreBatchParams, CoreBatchResponse } from "./core";
-import { UnitGetVinInfoParams, UnitGetVinInfoResponse } from "./unit";
+	CoreBatchParams,
+	CoreBatchResponse,
+	CoreSearchItemsParams,
+	CoreSearchItemsResponse
+} from "./core";
 import {
 	ItemUpdateCustomFieldParams,
 	ItemUpdateCustomFieldResponse
 } from "./item";
+import {
+	MessagesDeleteMessageParams,
+	MessagesDeleteMessageResponse,
+	MessagesLoadIntervalParams,
+	MessagesLoadIntervalResponse
+} from "./messages";
+import { TokenLoginParams, TokenLoginResponse } from "./token";
+import { UnitGetVinInfoParams, UnitGetVinInfoResponse } from "./unit";
+import { RemoteAPIError, WialonBatchError, WialonError } from "./WialonError";
 
 export * from "./Wialon";
+export {
+	WialonError,
+	WialonBatchError,
+	RemoteAPIError,
+	TokenLoginParams,
+	TokenLoginResponse,
+	CoreSearchItemsParams,
+	CoreSearchItemsResponse,
+	MessagesLoadIntervalParams,
+	MessagesLoadIntervalResponse,
+	MessagesDeleteMessageParams,
+	MessagesDeleteMessageResponse,
+	CoreBatchParams,
+	CoreBatchResponse,
+	UnitGetVinInfoParams,
+	UnitGetVinInfoResponse,
+	ItemUpdateCustomFieldParams
+};
 
 export interface Params extends Partial<Record<SVC, any>> {
 	"token/login": TokenLoginParams;
@@ -53,22 +72,3 @@ export type ProfileField =
 	| "brand"
 	| "year"
 	| "color";
-
-export {
-	WialonError,
-	WialonBatchError,
-	RemoteAPIError,
-	TokenLoginParams,
-	TokenLoginResponse,
-	CoreSearchItemsParams,
-	CoreSearchItemsResponse,
-	MessagesLoadIntervalParams,
-	MessagesLoadIntervalResponse,
-	MessagesDeleteMessageParams,
-	MessagesDeleteMessageResponse,
-	CoreBatchParams,
-	CoreBatchResponse,
-	UnitGetVinInfoParams,
-	UnitGetVinInfoResponse,
-	ItemUpdateCustomFieldParams
-};

@@ -14,10 +14,10 @@ export interface Error {
 
 export interface Response extends RemoteAPIError {
 	vin_lookup_result: {
-		pflds: ({
+		pflds: Array<{
 			/* profile fields */
 			n: string /* field name */;
 			v: string /* field value */;
-		})[];
+		}>;
 	};
 }

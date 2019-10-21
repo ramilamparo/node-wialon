@@ -1,4 +1,4 @@
-import { Wialon, Params } from "..";
+import { Params, Wialon } from "..";
 import {
 	Params as MessagesDeleteMessageParams,
 	Response as MessagesDeleteMessageResponse
@@ -9,7 +9,7 @@ import {
 } from "./load_interval";
 
 export class Messages extends Wialon {
-	loadInterval = (
+	public loadInterval = (
 		params: PartialExcept<
 			Params["messages/load_interval"],
 			"itemId" | "timeFrom" | "timeTo"
@@ -30,7 +30,7 @@ export class Messages extends Wialon {
 			this.host
 		);
 	};
-	deleteMessage = (params: Params["messages/delete_message"]) => {
+	public deleteMessage = (params: Params["messages/delete_message"]) => {
 		return Wialon.execute(
 			"messages/delete_message",
 			params,
