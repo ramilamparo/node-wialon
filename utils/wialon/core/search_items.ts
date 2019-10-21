@@ -75,7 +75,7 @@ export interface Response extends RemoteAPIError {
 					ej: string /* extentended JSON */;
 					jp: {
 						/* custom fields */
-						[key: string]: String;
+						[key: string]: string;
 					};
 					ds: string /* description */;
 					p: string /* phone number */;

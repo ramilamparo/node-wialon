@@ -4,4 +4,4 @@ export interface Params extends RemoteAPIError {
 	msgIndex: number;
 }
 
-export interface Response extends RemoteAPIError {}
+export type Response = RemoteAPIError;

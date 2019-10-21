@@ -16,7 +16,8 @@ import {
 } from "./messages";
 import { TokenLoginParams, TokenLoginResponse } from "./token";
 import { UnitGetVinInfoParams, UnitGetVinInfoResponse } from "./unit";
-import { RemoteAPIError, WialonBatchError, WialonError } from "./WialonError";
+import { WialonBatchError } from "./WialonBatchError";
+import { RemoteAPIError, WialonError } from "./WialonError";
 
 export * from "./Wialon";
 export {
