@@ -4,7 +4,8 @@
 	"description": "A NodeJS wrapper implementation for Wialon Remote API",
 	"main": "dist/index.js",
 	"scripts": {
-		"test": "npm run test"
+		"test:run": "jest",
+		"test:watch": "jest --watch"
 	},
 	"repository": {
 		"type": "git",
@@ -21,7 +22,16 @@
 	"homepage": "https://github.com/ramilamparo/node-wialon#readme",
 	"devDependencies": {
 		"@types/jest": "^24.0.18",
+		"@types/nock": "^11.1.0",
 		"jest": "^24.9.0",
+		"nock": "^11.4.0",
+		"ts-jest": "^24.1.0",
+		"ts-node": "^8.4.1",
 		"typescript": "^3.6.4"
+	},
+	"dependencies": {
+		"@types/node": "^12.7.12",
+		"axios": "^0.19.0",
+		"form-data": "^2.5.1"
 	}
 }
