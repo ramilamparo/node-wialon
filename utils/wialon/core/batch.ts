@@ -1,4 +1,4 @@
-import { SVC, Params, Response as APIResponse } from "../";
+import { Params, Response as APIResponse, SVC } from "../";
 import { RemoteAPIError } from "../WialonError";
 
 export interface Params<T extends keyof Omit<Params, "core/batch">>
@@ -8,6 +8,6 @@ export interface Params<T extends keyof Omit<Params, "core/batch">>
 	flag: number;
 }
 
-export type Response<
-	T extends keyof Omit<APIResponse, "core/batch">
-> = (APIResponse[T] & RemoteAPIError)[];
+export type Response<T extends keyof Omit<APIResponse, "core/batch">> = Array<
+	APIResponse[T] & RemoteAPIError
+>;
