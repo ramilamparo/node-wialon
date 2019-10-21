@@ -1,9 +1,5 @@
 export class WialonError extends Error {
-	constructor(error: RemoteAPIError) {
-		super(WialonError.getMessage(error.error));
-	}
-
-	static getMessage(errorCode?: number): string {
+	public static getMessage(errorCode?: number): string {
 		switch (errorCode) {
 			case 1:
 				return "Invalid session";
@@ -51,11 +47,8 @@ export class WialonError extends Error {
 				return "Unknown error";
 		}
 	}
-}
-
-export class WialonBatchError extends Error {
-	constructor(public errors: WialonError[]) {
-		super("A batch error has occurred.");
+	constructor(error: RemoteAPIError) {
+		super(WialonError.getMessage(error.error));
 	}
 }
 
