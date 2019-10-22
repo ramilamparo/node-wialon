@@ -4,4 +4,4 @@
 
 ## Installation
 
-`npm install https://github.com/ramilamparo/node-wialon.git`
+`npm install node-wialon`
