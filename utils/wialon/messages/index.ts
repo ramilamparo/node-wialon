@@ -1,4 +1,4 @@
-import { Params, Wialon } from "..";
+import { Params, PartialExcept, Wialon } from "..";
 import {
 	Params as MessagesDeleteMessageParams,
 	Response as MessagesDeleteMessageResponse
