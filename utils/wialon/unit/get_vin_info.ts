@@ -1,4 +1,4 @@
-import { RemoteAPIError } from "../WialonError";
+import { RemoteAPIError } from "..";
 
 export interface Params {
 	vin: string;

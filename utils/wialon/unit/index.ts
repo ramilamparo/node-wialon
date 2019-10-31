@@ -1,12 +1,12 @@
-import { Wialon } from "..";
+import { RemoteAPI } from "..";
 import {
 	Params as UnitGetVinInfoParams,
 	Response as UnitGetVinInfoResponse
 } from "./get_vin_info";
 
-export class Unit extends Wialon {
+export class Unit extends RemoteAPI {
 	public getVinInfo = (params: UnitGetVinInfoParams) => {
-		return Wialon.execute(
+		return RemoteAPI.execute(
 			"unit/get_vin_info",
 			params,
 			this.user.eid,

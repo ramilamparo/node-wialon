@@ -1,9 +1,9 @@
 import axios from "axios";
-import { Wialon } from "..";
+import { RemoteAPI } from "..";
 
-export class Utils extends Wialon {
+export class Utils extends RemoteAPI {
 	public getUnits = ({ flags = 1 }) => {
-		return Wialon.execute(
+		return RemoteAPI.execute(
 			"core/search_items",
 			{
 				spec: {

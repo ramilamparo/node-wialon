@@ -1,5 +1,5 @@
 import { Params, Response as APIResponse, SVC } from "../";
-import { RemoteAPIError } from "../WialonError";
+import { RemoteAPIError } from "..";
 
 export interface Params<T extends keyof Omit<Params, "core/batch">>
 	extends RemoteAPIError {

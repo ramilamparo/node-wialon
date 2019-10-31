@@ -1,6 +1,6 @@
 import axios from "axios";
 import FormData from "form-data";
-import { Params, Wialon, WialonBatchError, WialonError } from "..";
+import { Params, Wialon, WialonBatchError, WialonError, RemoteAPI } from "..";
 import {
 	Params as CoreBatchParams,
 	Response as CoreBatchResponse
@@ -10,7 +10,7 @@ import {
 	Response as CoreSearchItemsResponse
 } from "./search_items";
 
-export class Core extends Wialon {
+export class Core extends RemoteAPI {
 	public searchItems = (params: Params["core/search_items"]) => {
 		return Wialon.execute(
 			"core/search_items",
