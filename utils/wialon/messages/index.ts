@@ -1,4 +1,4 @@
-import { Params, PartialExcept, Wialon } from "..";
+import { Params, PartialExcept, RemoteAPI } from "..";
 import {
 	Params as MessagesDeleteMessageParams,
 	Response as MessagesDeleteMessageResponse
@@ -8,14 +8,14 @@ import {
 	Response as MessagesLoadIntervalResponse
 } from "./load_interval";
 
-export class Messages extends Wialon {
+export class Messages extends RemoteAPI {
 	public loadInterval = (
 		params: PartialExcept<
 			Params["messages/load_interval"],
 			"itemId" | "timeFrom" | "timeTo"
 		>
 	) => {
-		return Wialon.execute<"messages/load_interval">(
+		return RemoteAPI.execute<"messages/load_interval">(
 			"messages/load_interval",
 			{
 				itemId: params.itemId,
@@ -31,7 +31,7 @@ export class Messages extends Wialon {
 		);
 	};
 	public deleteMessage = (params: Params["messages/delete_message"]) => {
-		return Wialon.execute(
+		return RemoteAPI.execute(
 			"messages/delete_message",
 			params,
 			this.user.eid,
