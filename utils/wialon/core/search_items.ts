@@ -1,4 +1,4 @@
-import { RemoteAPIError } from "../WialonError";
+import { RemoteAPIError } from "..";
 
 export interface Params extends RemoteAPIError {
 	spec: {
@@ -24,7 +24,7 @@ export interface Response extends RemoteAPIError {
 		propType: string;
 		or_logic: string;
 	};
-	daraFlags: number;
+	dataFlags: number;
 	totalItemsCount: number;
 	indexFrom: number;
 	indexTo: number;

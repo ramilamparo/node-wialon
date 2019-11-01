@@ -3,6 +3,7 @@ import {
 	Messages,
 	Utils,
 	Unit,
+	Item,
 	RemoteAPI,
 	defaultHost,
 	TokenLoginParams
@@ -32,5 +33,9 @@ export class Wialon extends RemoteAPI {
 
 	public get Utils() {
 		return new Utils(this.user, this.host);
+	}
+
+	public get Item() {
+		return new Item(this.user, this.host);
 	}
 }

@@ -40,13 +40,15 @@ export type SVC =
 	| "unit/get_vin_info"
 	| "item/update_custom_field";
 
-export type ProfileField =
-	| "vehicle_type"
-	| "vin"
-	| "registration_plate"
-	| "brand"
-	| "year"
-	| "color";
+export enum ProfileField {
+	VEHICLE_TYPE = "vehicle_type",
+	VIN = "vin",
+	REGISTRATION_PLATE = "registration_plate",
+	BRAND = "brand",
+	YEAR = "year",
+	COLOR = "color",
+	MODEL = "model"
+}
 
 export type PartialExcept<T, K extends keyof T> = Partial<Omit<T, K>> &
 	Pick<T, K>;

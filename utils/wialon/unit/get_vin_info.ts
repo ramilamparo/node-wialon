@@ -1,4 +1,4 @@
-import { RemoteAPIError } from "..";
+import { RemoteAPIError, ProfileField } from "..";
 
 export interface Params {
 	vin: string;
@@ -14,10 +14,12 @@ export interface Error {
 
 export interface Response extends RemoteAPIError {
 	vin_lookup_result: {
-		pflds: Array<{
-			/* profile fields */
-			n: string /* field name */;
-			v: string /* field value */;
-		}>;
+		pflds: {
+			[key: string]: {
+				/* profile fields */
+				n: ProfileField /* field name */;
+				v: string /* field value */;
+			};
+		};
 	};
 }

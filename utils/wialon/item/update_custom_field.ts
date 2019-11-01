@@ -4,8 +4,11 @@ export interface Params {
 	v: string;
 }
 
-export type Response = Array<{
-	id: number;
-	n: string;
-	v: string;
-}>;
+export type Response = [
+	number,
+	{
+		id: number;
+		n: string;
+		v: string;
+	}
+];

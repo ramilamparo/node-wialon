@@ -1,25 +1,28 @@
-import { Wialon, defaultHost } from "../";
+import { Wialon } from "../";
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
-import login from "./fixtures/wialon/token/login.json";
+import { Mock } from "./utils";
 
-describe("Login", () => {
+describe("token", () => {
 	const mock = new MockAdapter(axios);
 
 	afterEach(() => {
 		mock.reset();
 	});
 
-	test("Login", async () => {
-		const url = Wialon.buildUrl(defaultHost, "token/login");
+	test("login", async () => {
 		const params = {
 			token: "TOKEN"
 		};
-		mock.onPost(url).reply(200, login);
+
+		const mocked = Mock.login(mock);
+
 		const w = await Wialon.login(params);
-		expect(mock.history.post[0].data._streams).toContain(
-			JSON.stringify(params)
-		);
-		expect(w.user).toMatchObject(login);
+
+		expect(
+			mock.history.post[mock.history.post.length - 1].data._streams
+		).toContain(JSON.stringify(params));
+
+		expect(w.user).toMatchObject(mocked.reply);
 	});
 });
