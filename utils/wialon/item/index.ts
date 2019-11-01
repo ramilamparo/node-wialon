@@ -1,12 +1,12 @@
 import { RemoteAPI } from "..";
 import {
-	Params as ItemUpdateCustomFieldParams,
-	Response as ItemUpdateCustomFieldResponse
-} from "./update_custom_field";
+	Params as ItemUpdateProfileFieldParams,
+	Response as ItemUpdateProfileFieldResponse
+} from "./update_profile_field";
 export class Item extends RemoteAPI {
-	public updateCustomField(params: ItemUpdateCustomFieldParams) {
+	public updateProfileField(params: ItemUpdateProfileFieldParams) {
 		return RemoteAPI.execute(
-			"item/update_custom_field",
+			"item/update_profile_field",
 			params,
 			this.user.eid,
 			this.host
@@ -14,4 +14,4 @@ export class Item extends RemoteAPI {
 	}
 }
 
-export { ItemUpdateCustomFieldParams, ItemUpdateCustomFieldResponse };
+export { ItemUpdateProfileFieldParams, ItemUpdateProfileFieldResponse };

@@ -1,7 +1,7 @@
 import MockAdapter from "axios-mock-adapter";
 import { Wialon } from "../../";
 import { defaultHost } from "../../";
-import updateCustomFieldReply from "../fixtures/wialon/item/update_custom_field.json";
+import updateProfileFieldReply from "../fixtures/wialon/item/update_profile_field.json";
 import loginReply from "../fixtures/wialon/token/login.json";
 
 export class Mock {
@@ -13,12 +13,12 @@ export class Mock {
 			url
 		};
 	}
-	public static updateCustomField(mock: MockAdapter) {
-		const url = Wialon.buildUrl(defaultHost, "item/update_custom_field");
-		mock.onPost(url).reply(200, updateCustomFieldReply);
+	public static updateProfileField(mock: MockAdapter) {
+		const url = Wialon.buildUrl(defaultHost, "item/update_profile_field");
+		mock.onPost(url).reply(200, updateProfileFieldReply);
 
 		return {
-			reply: updateCustomFieldReply,
+			reply: updateProfileFieldReply,
 			url
 		};
 	}

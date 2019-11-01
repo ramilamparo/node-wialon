@@ -1,12 +1,12 @@
 import {
 	CoreSearchItemsParams,
-	ItemUpdateCustomFieldParams,
+	ItemUpdateProfileFieldParams,
 	UnitGetVinInfoParams,
 	MessagesDeleteMessageParams,
 	MessagesLoadIntervalParams,
 	TokenLoginParams,
 	CoreSearchItemsResponse,
-	ItemUpdateCustomFieldResponse,
+	ItemUpdateProfileFieldResponse,
 	UnitGetVinInfoResponse,
 	MessagesDeleteMessageResponse,
 	MessagesLoadIntervalResponse,
@@ -19,7 +19,7 @@ export interface Params extends Partial<Record<SVC, any>> {
 	"messages/load_interval": MessagesLoadIntervalParams;
 	"messages/delete_message": MessagesDeleteMessageParams;
 	"unit/get_vin_info": UnitGetVinInfoParams;
-	"item/update_custom_field": ItemUpdateCustomFieldParams;
+	"item/update_profile_field": ItemUpdateProfileFieldParams;
 }
 
 export interface Response extends Partial<Record<SVC, any>> {
@@ -28,7 +28,7 @@ export interface Response extends Partial<Record<SVC, any>> {
 	"messages/load_interval": MessagesLoadIntervalResponse;
 	"messages/delete_message": MessagesDeleteMessageResponse;
 	"unit/get_vin_info": UnitGetVinInfoResponse;
-	"item/update_custom_field": ItemUpdateCustomFieldResponse;
+	"item/update_profile_field": ItemUpdateProfileFieldResponse;
 }
 
 export type SVC =
@@ -38,7 +38,7 @@ export type SVC =
 	| "messages/delete_message"
 	| "core/batch"
 	| "unit/get_vin_info"
-	| "item/update_custom_field";
+	| "item/update_profile_field";
 
 export enum ProfileField {
 	VEHICLE_TYPE = "vehicle_type",
