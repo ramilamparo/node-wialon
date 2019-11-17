@@ -113,6 +113,10 @@ export interface Response {
 				};
 			}>;
 		}>;
+		cfl: number /* calculation flags */;
+		cnm: number /* mileage counter, km or miles */;
+		cneh: number /* engine hours counter, h */;
+		cnkb: number /* GPRS traffic counter, KB */;
 		drvrsmax: number /* maximal count of drivers (-1 - unlimited) */;
 	}>;
 }
