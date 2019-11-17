@@ -1,13 +1,6 @@
 import axios from "axios";
 import FormData from "form-data";
-import {
-	Params,
-	Response,
-	Wialon,
-	WialonBatchError,
-	WialonError,
-	RemoteAPI
-} from "..";
+import { Params, Wialon, WialonBatchError, WialonError, RemoteAPI } from "..";
 import {
 	Params as CoreBatchParams,
 	Response as CoreBatchResponse
