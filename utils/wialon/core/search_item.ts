@@ -1,3 +1,4 @@
+import { MessagesLoadIntervalResponse } from "../";
 export interface Params {
 	id: number;
 	flags: number;
@@ -41,6 +42,17 @@ export interface Response {
 				};
 			}>;
 		}>;
+		pos: {
+			/* last known position */
+			t: number /* time (UTC) */;
+			y: number /* latitude */;
+			x: number /* longitude */;
+			z: number /* altitude */;
+			s: number /* speed */;
+			c: number /* course */;
+			sc: number /* satellites count */;
+		};
+		lmsg: MessagesLoadIntervalResponse /* last known message */;
 		drvrs: Partial<{
 			[key: string]: Partial<{
 				/* sequence number of driver */
