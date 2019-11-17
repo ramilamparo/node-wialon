@@ -5,7 +5,7 @@ export interface Params {
 
 export interface Response {
 	flags: number;
-	items: Partial<{
+	item: Partial<{
 		id: number;
 		nm: string;
 		uid: string;
