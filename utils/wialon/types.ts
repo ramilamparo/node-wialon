@@ -1,5 +1,7 @@
 import {
 	CoreSearchItemsParams,
+	CoreSearchItemParams,
+	CoreSearchItemResponse,
 	ItemUpdateProfileFieldParams,
 	UnitGetVinInfoParams,
 	MessagesDeleteMessageParams,
@@ -16,6 +18,7 @@ import {
 export interface Params extends Partial<Record<SVC, any>> {
 	"token/login": TokenLoginParams;
 	"core/search_items": CoreSearchItemsParams;
+	"core/search_item": CoreSearchItemParams;
 	"messages/load_interval": MessagesLoadIntervalParams;
 	"messages/delete_message": MessagesDeleteMessageParams;
 	"unit/get_vin_info": UnitGetVinInfoParams;
@@ -25,6 +28,7 @@ export interface Params extends Partial<Record<SVC, any>> {
 export interface Response extends Partial<Record<SVC, any>> {
 	"token/login": TokenLoginResponse;
 	"core/search_items": CoreSearchItemsResponse;
+	"core/search_item": CoreSearchItemResponse;
 	"messages/load_interval": MessagesLoadIntervalResponse;
 	"messages/delete_message": MessagesDeleteMessageResponse;
 	"unit/get_vin_info": UnitGetVinInfoResponse;
@@ -34,6 +38,7 @@ export interface Response extends Partial<Record<SVC, any>> {
 export type SVC =
 	| "token/login"
 	| "core/search_items"
+	| "core/search_item"
 	| "messages/load_interval"
 	| "messages/delete_message"
 	| "core/batch"

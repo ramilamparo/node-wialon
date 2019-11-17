@@ -33,7 +33,7 @@ export abstract class RemoteAPI {
 		params?: Params[T] | null,
 		sid?: string | null,
 		url: string = defaultHost
-	): Promise<Response[T] | never> => {
+	): Promise<Response[T] | WialonError> => {
 		const formData = new FormData();
 		if (params) {
 			formData.append("params", JSON.stringify(params));
