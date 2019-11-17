@@ -1,7 +1,8 @@
-import { Wialon, ItemUpdateProfileFieldResponse } from "../";
+import { Wialon, ItemUpdateProfileFieldResponse } from "../dist";
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
 import { Mock } from "./utils";
+import updateProfileFieldReply from "./fixtures/wialon/item/update_profile_field.json";
 
 describe("item", () => {
 	const mock = new MockAdapter(axios);
@@ -12,14 +13,18 @@ describe("item", () => {
 
 	test("update_profile_field", async () => {
 		Mock.login(mock);
-		const mocked = Mock.updateProfileField(mock);
+		const mocked = Mock.wialon(
+			mock,
+			"item/update_profile_field",
+			updateProfileFieldReply
+		);
 
 		const w = await Wialon.login({ token: "TOKEN" });
 
 		const fixture = mocked.reply as ItemUpdateProfileFieldResponse;
 
 		const params = {
-			itemId: 1234,
+			itemId: fixture[0],
 			n: fixture[1].n,
 			v: fixture[1].v
 		};
