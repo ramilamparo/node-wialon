@@ -40,6 +40,7 @@ export interface Response extends Partial<Record<SVC, any>> {
 }
 
 export type SVC =
+	| string 
 	| "token/login"
 	| "core/search_items"
 	| "core/search_item"
