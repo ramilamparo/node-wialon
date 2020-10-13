@@ -25,6 +25,10 @@ export class Wialon extends RemoteAPI {
 		return w;
 	};
 
+	public static useSession = (session: string, host: string = defaultHost) => {
+		return new Wialon({ eid: session }, host);
+	};
+
 	public execute: ExecuteMethod = async <T extends SVC, P>(
 		svc: T | string,
 		params: Params[T] | P

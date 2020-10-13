@@ -1,7 +1,7 @@
 import axios from "axios";
 import FormData from "form-data";
 
-import { TokenLoginResponse, WialonError, Params, Response, SVC } from ".";
+import { WialonError, Params, Response, SVC } from ".";
 
 export const defaultHost = "https://hst-api.wialon.com/wialon/ajax.html";
 
@@ -80,7 +80,7 @@ export abstract class RemoteAPI {
 	};
 
 	protected constructor(
-		public user: TokenLoginResponse,
+		public user: { eid: string },
 		public host: string = defaultHost
 	) {}
 }
