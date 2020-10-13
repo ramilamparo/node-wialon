@@ -19,6 +19,10 @@ export class Wialon extends RemoteAPI {
 		return w;
 	};
 
+	public execute = async <T = any>(svc: string, params: unknown): Promise<T> => {
+		return RemoteAPI.execute(svc, params, this.user.eid, this.host)
+	}
+
 	public get Unit() {
 		return new Unit(this.user, this.host);
 	}
