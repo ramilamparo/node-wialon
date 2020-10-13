@@ -5,10 +5,31 @@ import { TokenLoginResponse, WialonError, Params, Response, SVC } from ".";
 
 export const defaultHost = "https://hst-api.wialon.com/wialon/ajax.html";
 
+interface ExecuteMethod {
+	<T extends SVC>(
+		svc: T,
+		params?: Params[T] | null,
+		sid?: string | null,
+		url?: string
+	): Promise<Response[T]>;
+	<Response>(
+		svc: string,
+		params?: any,
+		sid?: string | null,
+		url?: string
+	): Promise<Response>;
+	<Params, Response>(
+		svc: string,
+		params?: Params,
+		sid?: string | null,
+		url?: string
+	): Promise<Response>;
+}
+
 export abstract class RemoteAPI {
 	public static buildUrl = <T extends SVC>(
 		url: string,
-		svc: T,
+		svc: T | string,
 		params?: Params[T] | null,
 		sid?: string
 	) => {
@@ -28,9 +49,9 @@ export abstract class RemoteAPI {
 		return composedUrl;
 	};
 
-	public static execute = async <T extends SVC>(
-		svc: T,
-		params?: Params[T] | null,
+	public static execute: ExecuteMethod = async <T extends SVC>(
+		svc: T | string,
+		params?: Params[T] | null | any,
 		sid?: string | null,
 		url: string = defaultHost
 	): Promise<Response[T]> => {
@@ -63,3 +84,5 @@ export abstract class RemoteAPI {
 		public host: string = defaultHost
 	) {}
 }
+
+RemoteAPI.execute<null, {}>("");
