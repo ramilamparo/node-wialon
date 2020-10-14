@@ -5,12 +5,10 @@ import {
 } from "./update_profile_field";
 export class Item extends RemoteAPI {
 	public updateProfileField(params: ItemUpdateProfileFieldParams) {
-		return RemoteAPI.execute(
-			"item/update_profile_field",
-			params,
-			this.user.eid,
-			this.host
-		);
+		return RemoteAPI.execute<
+			ItemUpdateProfileFieldParams,
+			ItemUpdateProfileFieldResponse
+		>("item/update_profile_field", params, this.user.eid, this.host);
 	}
 }
 
