@@ -8,10 +8,12 @@ import {
 	defaultHost,
 	TokenLoginParams
 } from "./";
-import { Params, SVC } from "./types";
+import { SVC } from "./types";
 
 interface ExecuteMethod {
-	<T extends SVC, Response>(svc: T, params: Params[T]): Promise<Response>;
+	<T extends SVC, Response>(svc: T, params: null): Promise<Response>;
+	<Response>(svc: string, params: null): Promise<Response>;
+	<T extends SVC, Params, Response>(svc: T, params: Params): Response;
 	<Params, Response>(svc: string, params: Params): Response;
 }
 
@@ -29,11 +31,16 @@ export class Wialon extends RemoteAPI {
 		return new Wialon({ eid: session }, host);
 	};
 
-	public execute: ExecuteMethod = async <T extends SVC, P>(
+	public execute = async <T extends SVC, Params, Response>(
 		svc: T | string,
-		params: Params[T] | P
+		params: Params
 	) => {
-		return RemoteAPI.execute(svc, params, this.user.eid, this.host);
+		return RemoteAPI.execute<T, Params, Response>(
+			svc,
+			params,
+			this.user.eid,
+			this.host
+		);
 	};
 
 	public get Unit() {

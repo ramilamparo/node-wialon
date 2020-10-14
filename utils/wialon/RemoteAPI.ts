@@ -1,25 +1,32 @@
 import axios from "axios";
 import FormData from "form-data";
 
-import { WialonError, Params, Response, SVC } from ".";
+import { WialonError, SVC } from ".";
+import { RemoteAPIError } from "./WialonError";
 
 export const defaultHost = "https://hst-api.wialon.com/wialon/ajax.html";
 
 interface ExecuteMethod {
-	<T extends SVC>(
-		svc: T,
-		params?: Params[T] | null,
-		sid?: string | null,
-		url?: string
-	): Promise<Response[T]>;
-	<Response>(
+	<Response = any>(
 		svc: string,
-		params?: any,
+		params?: null,
 		sid?: string | null,
 		url?: string
 	): Promise<Response>;
-	<Params, Response>(
+	<T extends SVC, Response = any>(
+		svc: T,
+		params?: null,
+		sid?: string | null,
+		url?: string
+	): Promise<Response>;
+	<Params = any, Response = any>(
 		svc: string,
+		params?: Params,
+		sid?: string | null,
+		url?: string
+	): Promise<Response>;
+	<T extends SVC, Params = any, Response = any>(
+		svc: T,
 		params?: Params,
 		sid?: string | null,
 		url?: string
@@ -27,10 +34,10 @@ interface ExecuteMethod {
 }
 
 export abstract class RemoteAPI {
-	public static buildUrl = <T extends SVC>(
+	public static buildUrl = <T extends SVC, Params>(
 		url: string,
 		svc: T | string,
-		params?: Params[T] | null,
+		params?: Params,
 		sid?: string
 	) => {
 		let composedUrl = url;
@@ -49,12 +56,16 @@ export abstract class RemoteAPI {
 		return composedUrl;
 	};
 
-	public static execute: ExecuteMethod = async <T extends SVC>(
+	public static execute: ExecuteMethod = async <
+		T extends SVC,
+		Params,
+		Response
+	>(
 		svc: T | string,
-		params?: Params[T] | null | any,
+		params?: Params | null,
 		sid?: string | null,
 		url: string = defaultHost
-	): Promise<Response[T]> => {
+	): Promise<Response> => {
 		const formData = new FormData();
 		if (params) {
 			formData.append("params", JSON.stringify(params));
@@ -63,7 +74,7 @@ export abstract class RemoteAPI {
 			formData.append("sid", sid);
 		}
 
-		const res = await axios.post<Response[T]>(
+		const res = await axios.post<Response | RemoteAPIError>(
 			RemoteAPI.buildUrl(url, svc),
 			formData,
 			{
@@ -72,11 +83,10 @@ export abstract class RemoteAPI {
 			}
 		);
 
-		if (res.data.error) {
-			throw new WialonError(res.data.error);
+		if ("error" in res.data) {
+			throw new WialonError(res.data);
 		}
-
-		return res.data;
+		return res.data as Response;
 	};
 
 	protected constructor(

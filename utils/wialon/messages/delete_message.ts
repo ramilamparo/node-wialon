@@ -1,7 +1,5 @@
-import { RemoteAPIError } from "..";
-
-export interface Params extends RemoteAPIError {
+export interface Params {
 	msgIndex: number;
 }
 
-export type Response = RemoteAPIError;
+export type Response = {};

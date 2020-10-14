@@ -2,8 +2,14 @@ import axios from "axios";
 import FormData from "form-data";
 import { Wialon, WialonBatchError, WialonError, RemoteAPI } from "..";
 import { Params as CoreBatchParams } from "./batch";
-import { Params as CoreSearchItemsParams } from "./search_items";
-import { Params as CoreSearchItemParams } from "./search_item";
+import {
+	Params as CoreSearchItemsParams,
+	Response as CoreSearchItemsResponse
+} from "./search_items";
+import {
+	Params as CoreSearchItemParams,
+	Response as CoreSearchItemResponse
+} from "./search_item";
 import {
 	LastMessagePosition,
 	AdministrativeFields,
@@ -51,7 +57,7 @@ type PossibleResponse = Partial<
 >;
 
 export class Core extends RemoteAPI {
-	public searchItems = <Response = PossibleResponse>(
+	public searchItems = <Response = CoreSearchItemsResponse<PossibleResponse>>(
 		params: CoreSearchItemsParams
 	) => {
 		return Wialon.execute<CoreSearchItemsParams, Response>(
@@ -62,7 +68,7 @@ export class Core extends RemoteAPI {
 		);
 	};
 
-	public searchItem = <Response = PossibleResponse>(
+	public searchItem = <Response = CoreSearchItemResponse<PossibleResponse>>(
 		params: CoreSearchItemParams
 	) => {
 		return Wialon.execute<CoreSearchItemParams, Response>(
@@ -108,4 +114,10 @@ export class Core extends RemoteAPI {
 	};
 }
 
-export { CoreBatchParams, CoreSearchItemsParams, CoreSearchItemParams };
+export {
+	CoreBatchParams,
+	CoreSearchItemsParams,
+	CoreSearchItemParams,
+	CoreSearchItemResponse,
+	CoreSearchItemsResponse
+};
