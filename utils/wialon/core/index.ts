@@ -1,22 +1,60 @@
 import axios from "axios";
 import FormData from "form-data";
-import { Params, Wialon, WialonBatchError, WialonError, RemoteAPI } from "..";
+import { Wialon, WialonBatchError, WialonError, RemoteAPI } from "..";
+import { Params as CoreBatchParams } from "./batch";
+import { Params as CoreSearchItemsParams } from "./search_items";
+import { Params as CoreSearchItemParams } from "./search_item";
 import {
-	Params as CoreBatchParams,
-	Response as CoreBatchResponse
-} from "./batch";
-import {
-	Params as CoreSearchItemsParams,
-	Response as CoreSearchItemsResponse
-} from "./search_items";
-import {
-	Params as CoreSearchItemParams,
-	Response as CoreSearchItemResponse
-} from "./search_item";
+	LastMessagePosition,
+	AdministrativeFields,
+	AdvancedProperties,
+	AvailableCommands,
+	Billing,
+	Commands,
+	Connection,
+	Counters,
+	CustomFields,
+	CustomProperties,
+	GUID,
+	GeneralProperties,
+	Maintenance,
+	Message,
+	MessageParameters,
+	Position,
+	ProfileFields,
+	Sensors,
+	TripDetectorAndFuelConsumption,
+	UnitImage
+} from "../format/Units";
+
+type PossibleResponse = Partial<
+	LastMessagePosition &
+		AdministrativeFields &
+		AdvancedProperties &
+		AvailableCommands &
+		Billing &
+		Commands &
+		Connection &
+		Counters &
+		CustomFields &
+		CustomProperties &
+		GUID &
+		GeneralProperties &
+		Maintenance &
+		Message &
+		MessageParameters &
+		Position &
+		ProfileFields &
+		Sensors &
+		TripDetectorAndFuelConsumption &
+		UnitImage
+>;
 
 export class Core extends RemoteAPI {
-	public searchItems = (params: Params["core/search_items"]) => {
-		return Wialon.execute(
+	public searchItems = <Response = PossibleResponse>(
+		params: CoreSearchItemsParams
+	) => {
+		return Wialon.execute<CoreSearchItemsParams, Response>(
 			"core/search_items",
 			params,
 			this.user.eid,
@@ -24,18 +62,25 @@ export class Core extends RemoteAPI {
 		);
 	};
 
-	public searchItem = (params: Params["core/search_item"]) => {
-		return Wialon.execute("core/search_item", params, this.user.eid, this.host);
+	public searchItem = <Response = PossibleResponse>(
+		params: CoreSearchItemParams
+	) => {
+		return Wialon.execute<CoreSearchItemParams, Response>(
+			"core/search_item",
+			params,
+			this.user.eid,
+			this.host
+		);
 	};
 
-	public batch = async <T extends keyof Omit<Params, "core/batch">>(
-		params: CoreBatchParams<T>
-	): Promise<CoreBatchResponse<T>> => {
+	public batch = async <Params, Response>(
+		params: CoreBatchParams<Params>
+	): Promise<Response> => {
 		const formData = new FormData();
 		formData.append("params", JSON.stringify({ params, flags: 0 }));
 		formData.append("sid", this.user.eid);
 
-		const res = await axios.post<CoreBatchResponse<T>>(
+		const res = await axios.post<Response>(
 			`${this.host}/wialon/ajax.html?sid=${this.user.eid}&svc=core/batch`,
 			formData,
 			{
@@ -43,24 +88,24 @@ export class Core extends RemoteAPI {
 				timeout: 0
 			}
 		);
-		const errors = res.data.reduce((batchErrors: WialonError[], value) => {
-			if (value && value.error) {
-				batchErrors.push(new WialonError(value));
+
+		if (res.data instanceof Array) {
+			const errors: WialonError[] = res.data.reduce(
+				(batchErrors: Array<WialonError>, value: WialonError | Response) => {
+					if (value && "error" in value) {
+						batchErrors.push(new WialonError(value));
+					}
+					return batchErrors;
+				},
+				[]
+			);
+			if (errors.length) {
+				throw new WialonBatchError(errors);
 			}
-			return batchErrors;
-		}, []);
-		if (errors.length) {
-			throw new WialonBatchError(errors);
+			return res.data;
 		}
-		return res.data;
+		throw new Error("Unknown response.");
 	};
 }
 
-export {
-	CoreBatchParams,
-	CoreBatchResponse,
-	CoreSearchItemsParams,
-	CoreSearchItemsResponse,
-	CoreSearchItemParams,
-	CoreSearchItemResponse
-};
+export { CoreBatchParams, CoreSearchItemsParams, CoreSearchItemParams };

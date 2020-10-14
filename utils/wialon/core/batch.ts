@@ -1,13 +1,7 @@
-import { Params as AllParams, Response as APIResponse, SVC } from "../";
-import { RemoteAPIError } from "..";
+import { SVC } from "../";
 
-export interface Params<T extends keyof Omit<AllParams, "core/batch">>
-	extends RemoteAPIError {
+export interface Params<T> {
 	svc: SVC;
-	params: AllParams[T];
+	params: T;
 	flag: number;
 }
-
-export type Response<T extends keyof Omit<APIResponse, "core/batch">> = Array<
-	APIResponse[T] & RemoteAPIError
->;

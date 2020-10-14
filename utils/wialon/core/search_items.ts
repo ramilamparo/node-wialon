@@ -1,6 +1,4 @@
-import { RemoteAPIError, CoreSearchItemResponse } from "..";
-
-export interface Params extends RemoteAPIError {
+export interface Params {
 	spec: {
 		itemsType: string;
 		propName: string;
@@ -15,7 +13,7 @@ export interface Params extends RemoteAPIError {
 	to: number;
 }
 
-export interface Response extends RemoteAPIError {
+export interface Response<T> {
 	searchSpec: {
 		itemsTypes: string;
 		propName: string;
@@ -28,5 +26,5 @@ export interface Response extends RemoteAPIError {
 	totalItemsCount: number;
 	indexFrom: number;
 	indexTo: number;
-	items: Array<CoreSearchItemResponse["item"]>;
+	items: Array<T>;
 }
