@@ -1,4 +1,4 @@
-import { WialonError } from ".";
+import { WialonError } from "./WialonError";
 
 export class WialonBatchError extends Error {
 	constructor(public errors: WialonError[]) {

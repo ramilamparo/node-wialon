@@ -1,6 +1,6 @@
 export interface MessageWithData {
 	t: number /* message time (UTC) */;
-	f: number /* flags (see below)*/;
+	f: number /* flags (see below) */;
 	tp: "ud" /* message type (ud - message with data) */;
 	pos: {
 		/* position */

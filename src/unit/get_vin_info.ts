@@ -1,4 +1,4 @@
-import { RemoteAPIError, ProfileField } from "..";
+import type { RemoteAPIError, ProfileField } from "..";
 
 export interface Params {
 	vin: string;
