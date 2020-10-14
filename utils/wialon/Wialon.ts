@@ -15,6 +15,8 @@ interface ExecuteMethod {
 	<Response>(svc: string, params: null): Promise<Response>;
 	<T extends SVC, Params, Response>(svc: T, params: Params): Response;
 	<Params, Response>(svc: string, params: Params): Response;
+	<T extends SVC, Params, Response>(svc: T, params: Params): Response;
+	<Params, Response>(svc: string, params: Params): Response;
 }
 
 export class Wialon extends RemoteAPI {
@@ -31,11 +33,11 @@ export class Wialon extends RemoteAPI {
 		return new Wialon({ eid: session }, host);
 	};
 
-	public execute = async <T extends SVC, Params, Response>(
+	public execute: ExecuteMethod = async <T extends SVC, Params, Response>(
 		svc: T | string,
 		params: Params
 	) => {
-		return RemoteAPI.execute<T, Params, Response>(
+		return RemoteAPI.execute<any, Params, Response>(
 			svc,
 			params,
 			this.user.eid,
