@@ -15,14 +15,9 @@ const Messages_1 = require("./messages/Messages");
 const Utils_1 = require("./utils/Utils");
 const Unit_1 = require("./unit/Unit");
 const Item_1 = require("./item/Item");
+const Report_1 = require("./report/Report");
 const RemoteAPI_1 = require("./RemoteAPI");
 class Wialon extends RemoteAPI_1.RemoteAPI {
-    constructor() {
-        super(...arguments);
-        this.execute = (svc, params) => __awaiter(this, void 0, void 0, function* () {
-            return RemoteAPI_1.RemoteAPI.execute(svc, params, this.user.eid, this.host);
-        });
-    }
     get Unit() {
         return new Unit_1.Unit(this.user, this.host);
     }
@@ -37,6 +32,9 @@ class Wialon extends RemoteAPI_1.RemoteAPI {
     }
     get Item() {
         return new Item_1.Item(this.user, this.host);
+    }
+    get Report() {
+        return new Report_1.Report(this.user, this.host);
     }
 }
 exports.Wialon = Wialon;

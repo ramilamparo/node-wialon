@@ -15,7 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Core = void 0;
 const axios_1 = __importDefault(require("axios"));
 const form_data_1 = __importDefault(require("form-data"));
-const Wialon_1 = require("../Wialon");
 const WialonBatchError_1 = require("../WialonBatchError");
 const WialonError_1 = require("../WialonError");
 const RemoteAPI_1 = require("../RemoteAPI");
@@ -23,10 +22,10 @@ class Core extends RemoteAPI_1.RemoteAPI {
     constructor() {
         super(...arguments);
         this.searchItems = (params) => {
-            return Wialon_1.Wialon.execute("core/search_items", params, this.user.eid, this.host);
+            return RemoteAPI_1.RemoteAPI.execute("core/search_items", params, this.user.eid, this.host);
         };
         this.searchItem = (params) => {
-            return Wialon_1.Wialon.execute("core/search_item", params, this.user.eid, this.host);
+            return RemoteAPI_1.RemoteAPI.execute("core/search_item", params, this.user.eid, this.host);
         };
         this.batch = (params) => __awaiter(this, void 0, void 0, function* () {
             const formData = new form_data_1.default();

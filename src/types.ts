@@ -8,7 +8,9 @@ export type SVC =
 	| "unit/get_vin_info"
 	| "item/update_profile_field"
 	| "unit/update_service_interval"
-	| "report/exec_report";
+	| "report/exec_report"
+	| "report/cleanup_result"
+	| "report/select_result_rows";
 
 export enum ProfileField {
 	VEHICLE_TYPE = "vehicle_type",
@@ -17,7 +19,7 @@ export enum ProfileField {
 	BRAND = "brand",
 	YEAR = "year",
 	COLOR = "color",
-	MODEL = "model"
+	MODEL = "model",
 }
 
 export type PartialExcept<T, K extends keyof T> = Partial<Omit<T, K>> &

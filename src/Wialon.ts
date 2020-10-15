@@ -3,8 +3,8 @@ import { Messages } from "./messages/Messages";
 import { Utils } from "./utils/Utils";
 import { Unit } from "./unit/Unit";
 import { Item } from "./item/Item";
-import {Report} from "./report/Report"
-import { RemoteAPI , defaultHost } from "./RemoteAPI";
+import { Report } from "./report/Report";
+import { RemoteAPI, defaultHost } from "./RemoteAPI";
 import { TokenLoginParams } from "./token";
 
 export class Wialon extends RemoteAPI {
