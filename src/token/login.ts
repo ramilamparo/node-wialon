@@ -5,44 +5,75 @@ export interface Params {
 }
 
 export interface Response {
-	eid: string /* session ID */;
-	gis_sid: string /* session ID for gis services */;
-	host: string /* host */;
-	hw_gw_ip: string /* hardware gateway ip */;
-	au: string /* user name */;
-	pi: number /* ping interval */;
-	tm: number /* current time (UTC) */;
-	wsdk_version: string /* sdk version */;
+	/** session ID */
+	eid: string;
+	/** session ID for gis services */
+	gis_sid: string;
+	/** host */
+	host: string;
+	/** hardware gateway ip */
+	hw_gw_ip: string;
+	/** user name */
+	au: string;
+	/** ping interval */
+	pi: number;
+	/** current time (UTC) */
+	tm: number;
+	/** sdk version */
+	wsdk_version: string;
+	/** user from whose behalf you want to perform login */
 	user: {
-		/* user from whose behalf you want to perform login */
-		nm: string /* name  */;
-		cls: number /* ID of superclass user */;
-		id: number /* ID */;
+		/** name  */
+		nm: string;
+		/** ID of superclass user */
+		cls: number;
+		/** ID */
+		id: number;
+		/** custom properties, for example: */
 		prp: {
-			/* custom properties, for example: */
-			dst: string /* daylight savings time */;
-			language: string /* language (two-lettered code) */;
-			msakey: string /* access key to mobile site */;
-			pcal: string /* Iranian calendar */;
-			tz: string /* time zone */;
-			us_units: string /* US metrics (miles and gallons) */;
+			/** daylight savings time */
+			dst: string;
+			/** language (two-lettered code) */
+			language: string;
+			/** access key to mobile site */
+			msakey: string;
+			/** Iranian calendar */
+			pcal: string;
+			/** time zone */
+			tz: string;
+			/** US metrics (miles and gallons) */
+			us_units: string;
 		};
-		crt: number /* creator ID */;
-		bact: number /* account ID */;
-		fl: number /* user flags */;
-		hm: string /* host mask */;
-		uacl: number /* user access to himself */;
-		mu: number /* Measurement system */;
-		ct: number /* User creation date */;
-		ftp: { [key: string]: any } /* FTP settings */;
-		ld: number /* Last login date */;
-		pfl: number /* Creators flag */;
+		/** creator ID */
+		crt: number;
+		/** account ID */
+		bact: number;
+		/** user flags */
+		fl: number;
+		/** host mask */
+		hm: string;
+		/** user access to himself */
+		uacl: number;
+		/** Measurement system */
+		mu: number;
+		/** User creation date */
+		ct: number;
+		/** FTP settings */
+		ftp: { [key: string]: any };
+		/** Last login date */
+		ld: number;
+		/** Creators flag */
+		pfl: number;
+		/** Two-factor authentication settings */
 		ap: {
-			/* Two-factor authentication settings */
-			type: number /* authentication type ( 0 - none, 1 - email, 2 - SMS ) */;
-			phone: string /* Phone number */;
+			/** authentication type ( 0 - none, 1 - email, 2 - SMS ) */
+			type: number;
+			/** Phone number */
+			phone: string;
 		};
-		mapps: { [key: string]: any } /* Mobile apps list */;
-		mappsmax: number /* Restrictions on mobile applications specified in the billing plan */;
+		/** Mobile apps list */
+		mapps: { [key: string]: any };
+		/** Restrictions on mobile applications specified in the billing plan */
+		mappsmax: number;
 	};
 }

@@ -1,96 +1,155 @@
 export interface MessageWithData {
-	t: number /* message time (UTC) */;
-	f: number /* flags (see below) */;
-	tp: "ud" /* message type (ud - message with data) */;
+	/** message time (UTC) */
+	t: number;
+	/** flags (see below) */
+	f: number;
+	/** message type (ud - message with data) */
+	tp: "ud";
+	/** position */
 	pos: {
-		/* position */
-		y: number /* latitude */;
-		x: number /* longitude */;
-		z: number /* altitude */;
-		s: number /* speed */;
-		c: number /* course */;
-		sc: number /* satellites count */;
+		/** latitude */
+		y: number;
+		/** longitude */
+		x: number;
+		/** altitude */
+		z: number;
+		/** speed */
+		s: number;
+		/** course */
+		c: number;
+		/** satellites count */
+		sc: number;
 	};
-	i: number /* input data */;
-	o: number /* output data */;
+	/** input data */
+	i: number;
+	/** output data */
+	o: number;
+	/** parameters */
 	p: {
-		/* parameters */
 		[key: string]: number;
 	};
-	lc: number /* lbs message checksum */;
-	rt: number /* message registration time (UTC) */;
+	/** lbs message checksum */
+	lc: number;
+	/** message registration time (UTC) */
+	rt: number;
 }
 
 export interface SMS {
-	t: number /* message time (UTC) */;
-	f: number /* flags: SMS messages has no flags, therefore 0 will be placed */;
-	tp: "us" /* message type (us - SMS message) */;
-	st: string /* text of message */;
-	mp: string /* modem phone number */;
-	p: {} /* parameters */;
+	/** message time (UTC) */
+	t: number;
+	/** flags: SMS messages has no flags, therefore 0 will be placed */
+	f: number;
+	/** message type (us - SMS message) */
+	tp: "us";
+	/** text of message */
+	st: string;
+	/** modem phone number */
+	mp: string;
+	/** parameters */
+	p: {};
 }
 
 export interface Command {
-	t: number /* message time (UTC) */;
-	f: number /* flags: messages with commands has no flags, therefore 0 will be placed */;
-	tp: "ucr" /* message type (ucr - command) */;
-	ca: string /* command name */;
-	cn: string /* command type */;
-	cp: string /* command parameters */;
-	ui: number /* user ID */;
-	ln: string /* link name */;
-	lt: string /* link type */;
-	et: number /* execution time */;
-	p: {} /* parameters */;
+	/** message time (UTC) */
+	t: number;
+	/** flags: messages with commands has no flags, therefore 0 will be placed */
+	f: number;
+	/** message type (ucr - command) */
+	tp: "ucr";
+	/** command name */
+	ca: string;
+	/** command type */
+	cn: string;
+	/** command parameters */
+	cp: string;
+	/** user ID */
+	ui: number;
+	/** link name */
+	ln: string;
+	/** link type */
+	lt: string;
+	/** execution time */
+	et: number;
+	/** parameters */
+	p: {};
 }
 
 export interface Event {
-	t: number /* message time (UTC) */;
-	f: number /* flags (see below) */;
-	tp: "evt" /* message type (evt - event) */;
-	et: string /* text of event */;
-	x: number /* longitude */;
-	y: number /* latitude */;
-	p: {} /* parameters */;
+	/** message time (UTC) */
+	t: number;
+	/** flags (see below) */
+	f: number;
+	/** message type (evt - event) */
+	tp: "evt";
+	/** text of event */
+	et: string;
+	/** longitude */
+	x: number;
+	/** latitude */
+	y: number;
+	/** parameters */
+	p: {};
 }
 
 export interface Notification {
-	t: number /* message time (UTC) */;
-	f: number /* flags: messages with notifications has no flags, therefore 0 will be placed */;
-	tp: "xx" /* message type */;
-	p: {} /* parameters */;
+	/** message time (UTC) */
+	t: number;
+	/** flags: messages with notifications has no flags, therefore 0 will be placed */
+	f: number;
+	/** message type */
+	tp: "xx";
+	/** parameters */
+	p: {};
 }
 
 export interface BillingMessage {
-	t: number /* message time (UTC) */;
-	f: number /* flags: 0x1 - is set when message contains information about payment */;
-	tp: "xx" /* message type */;
-	p: {} /* parameters */;
+	/** message time (UTC) */
+	t: number;
+	/** flags: 0x1 - is set when message contains information about payment */
+	f: number;
+	/** message type */
+	tp: "xx";
+	/** parameters */
+	p: {};
 }
 
 export interface SMSForDriver {
-	t: number /* message time (UTC) */;
-	f: number /* flags: 0x1 - is set when message is sent */;
-	tp: "xx" /* message type */;
+	/** message time (UTC) */
+	t: number;
+	/** flags: 0x1 - is set when message is sent */
+	f: number;
+	/** message type */
+	tp: "xx";
+	/** parameters */
 	p: {
-		/* parameters */
-		phone: string /* phone number */;
-		sms_text: string /* sms text */;
-		driver_name: string /* driver name */;
-		driver_id: number /* driver ID */;
+		/** phone number */
+		phone: string;
+		/** sms text */
+		sms_text: string;
+		/** driver name */
+		driver_name: string;
+		/** driver ID */
+		driver_id: number;
 	};
 }
 
 export interface Log {
-	t: number /* message time (UTC) */;
-	f: 4096 /* flags: 4096 - log messages */;
-	tp: "xx" /* message type */;
+	/** message time (UTC) */
+	t: number;
+	/** flags: 4096 - log messages */
+	f: 4096;
+	/** message type */
+	tp: "xx";
+	/** parameters */
 	p: {
-		/* parameters */
-		user: string /* user name */;
-		action: string /* action */;
-		host: string /* host */;
-		p1: string /* parameters */;
+		/** user name */
+		user: string;
+		/** action */
+		action: string;
+		/** host */
+		host: string;
+		/** parameters */
+		p1: string;
 		[key: string]: string;
 	};
 }

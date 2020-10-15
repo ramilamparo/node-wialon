@@ -6,19 +6,24 @@ export interface Params {
 
 export interface Error {
 	vin_lookup_result: {
-		error: boolean /* true if error */;
-		message: string /* error message */;
-		reasons: string[] /* error reasons */;
+		/** true if error */
+		error: boolean;
+		/** error message */
+		message: string;
+		/** error reasons */
+		reasons: string[];
 	};
 }
 
 export interface Response extends RemoteAPIError {
 	vin_lookup_result: {
 		pflds: {
+			/** profile fields */
 			[key: string]: {
-				/* profile fields */
-				n: ProfileField /* field name */;
-				v: string /* field value */;
+				/** field name */
+				n: ProfileField;
+				/** field value */
+				v: string;
 			};
 		};
 	};

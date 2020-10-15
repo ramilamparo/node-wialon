@@ -7,7 +7,8 @@ export type SVC =
 	| "core/batch"
 	| "unit/get_vin_info"
 	| "item/update_profile_field"
-	| "unit/update_service_interval";
+	| "unit/update_service_interval"
+	| "report/exec_report";
 
 export enum ProfileField {
 	VEHICLE_TYPE = "vehicle_type",

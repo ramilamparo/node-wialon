@@ -1,154 +1,192 @@
 export interface GeneralProperties {
-	/* measure units: 0 - si, 1 - us, 2 - imperial, 3 - metric with gallons */
+	/** measure units: 0 - si, 1 - us, 2 - imperial, 3 - metric with gallons */
 	mu: number;
-	/* name */
+	/** name */
 	nm: string;
-	/* superclass ID: "avl_unit" */
+	/** superclass ID: "avl_unit" */
 	cls: number;
-	/* unit ID */
+	/** unit ID */
 	id: number;
-	/* current user access level for unit */
+	/** current user access level for unit */
 	uacl: number;
 }
 
 export interface CustomProperties {
 	prp: {
-		/* rotate images: "1" - yes, "0" - no */
+		/** rotate images: "1" - yes, "0" - no */
 		img_rot: string;
-		/* sensor ID which will be shown in monitoring panel */
+		/** sensor ID which will be shown in monitoring panel */
 		monitoring_sensor_id: string;
-		/* sensor - source of motion state ID */
+		/** sensor - source of motion state ID */
 		motion_state_sensor_id: string;
-		/* sensor - source of track colour */
+		/** sensor - source of track colour */
 		sensors_colors_id: string;
-		/* use sensor color in monitoring panel: "1" - yes, "0" - no */
+		/** use sensor color in monitoring panel: "1" - yes, "0" - no */
 		use_sensor_color: string;
-		/* used one of parameters to choose source of color for track */
-		/* table of colors for track by sensor */
+		/** used one of parameters to choose source of color for track */
+		/** table of colors for track by sensor */
 		sensors_colors: string;
-		/* color for track */
+		/** color for track */
 		solid_colors: string;
-		/* table of colors for track by speed */
+		/** table of colors for track by speed */
 		speed_colors: string;
-		/* used for storage last used colors */
-		/* table of colors for track by sensor */
+		/** used for storage last used colors */
+		/** table of colors for track by sensor */
 		track_sensor: string;
-		/* color for track */
+		/** color for track */
 		track_solid: string;
-		/* table of colors for track by speed */
+		/** table of colors for track by speed */
 		track_speed: string;
-		/* sensor ID which shows battery status */
+		/** sensor ID which shows battery status */
 		monitoring_battery_id: string;
 		[key: string]: string;
 	};
-	/* creation time */
+	/** creation time */
 	ct: number;
 }
 
 export interface Billing {
-	/* creator ID */
+	/** creator ID */
 	crt: number;
-	/* account ID */
+	/** account ID */
 	bact: number;
 }
 
 export interface CustomFields {
 	flds: {
-		/* custom fields */
+		/** custom fields */
 		[key: string]: {
-			/* sequence number */
-			id: number /* ID */;
-			n: string /* name */;
-			v: string /* value */;
+			/** sequence number */
+			/** ID */
+			id: number;
+			/** name */
+			n: string;
+			/** value */
+			v: string;
 		};
 	};
-	fldsmax: number /* maximal count of custom fields (-1 - unlimited) */;
+	/** maximal count of custom fields (-1 - unlimited) */
+	fldsmax: number;
 }
 
 export interface UnitImage {
-	uri: string /* image link */;
-	ugi: number /* image changes counter */;
+	/** image link */
+	uri: string;
+	/** image changes counter */
+	ugi: number;
 }
-
 
 export interface Message {}
 
 export interface GUID {
-	gd: string /* unit GUID */;
+	/** unit GUID */
+	gd: string;
 }
 
 export interface AdministrativeFields {
+	/** administrative fields */
 	aflds: {
-		/* administrative fields */
-
+		/** sequence number */
 		[key: string]: {
-			/* sequence number */
-			id: number /* ID */;
-			n: string /* name */;
-			v: string /* value */;
+			/** ID */
+			id: number;
+			/** name */
+			n: string;
+			/** value */
+			v: string;
 		};
 	};
-	afldsmax: number /* maximal count of administrative fields (-1 - unlimited) */;
+	/** maximal count of administrative fields (-1 - unlimited) */
+	afldsmax: number;
 }
 
 export interface AdvancedProperties {
-	uid: string /* unique ID (hardware) */;
-	uid2: string /* second unique ID (hardware) */;
-	hw: number /* hardware type */;
-	ph: string /* phone number */;
-	ph2: string /* second phone number */;
-	psw: string /* password */;
-	act: boolean /* unit deactivated - 0, activated - 1 */;
-	dactt: number /* deactivation time UNIX, 0 - unit is activated */;
+	/** unique ID (hardware) */
+	uid: string;
+	/** second unique ID (hardware) */
+	uid2: string;
+	/** hardware type */
+	hw: number;
+	/** phone number */
+	ph: string;
+	/** second phone number */
+	ph2: string;
+	/** password */
+	psw: string;
+	/** unit deactivated - 0, activated - 1 */
+	act: boolean;
+	/** deactivation time UNIX, 0 - unit is activated */
+	dactt: number;
 }
 
 export interface AvailableCommands {
+	/** array of commands */
 	cmds: [
-		/* array of commands */
 		{
-			n: string /* name */;
-			a: number /* access level (access rights that user must have to execute current command) */;
-			t: string /* link type */;
-			c: string /* command type */;
+			/** name */
+			n: string;
+			/** access level (access rights that user must have to execute current command) */
+			a: number;
+			/** link type */
+			t: string;
+			/** command type */
+			c: string;
 		}
 	];
 }
 
 export interface LastMessagePosition {
 	pos: {
-		/* last known position */
-		t: number /* time (UTC) */;
-		y: number /* latitude */;
-		x: number /* longitude */;
-		z: number /* altitude */;
-		s: number /* speed */;
-		c: number /* course */;
-		sc: number /* satellites count */;
+		/** last known position */
+		/** time (UTC) */
+		t: number;
+		/** latitude */
+		y: number;
+		/** longitude */
+		x: number;
+		/** altitude */
+		z: number;
+		/** speed */
+		s: number;
+		/** course */
+		c: number;
+		/** satellites count */
+		sc: number;
 	};
 	lmsg: {
-		/* last known message */
+		/** last known message */
 	};
 }
 
 export interface Sensors {
 	sens: {
-		/* sensors */
+		/** sensors */
 		[key: string]: {
-			/* sequence number of sensor */
-			id: number /* ID */;
-			n: string /* name */;
-			t: string /* type */;
-			d: string /* description */;
-			m: string /* metrics */;
-			p: string /* parameter */;
-			f: number /* sensor flags */;
-			c: string /* configuration */;
-			vt: number /* validation type */;
-			vs: number /* validation sensor ID */;
+			/** sequence number of sensor */
+			/** ID */
+			id: number;
+			/** name */
+			n: string;
+			/** type */
+			t: string;
+			/** description */
+			d: string;
+			/** metrics */
+			m: string;
+			/** parameter */
+			p: string;
+			/** sensor flags */
+			f: number;
+			/** configuration */
+			c: string;
+			/** validation type */
+			vt: number;
+			/** validation sensor ID */
+			vs: number;
 			tbl: [
-				/* calculation table */
+				/** calculation table */
 				{
-					/* parameters */
+					/** parameters */
 					x: number;
 					a: number;
 					b: number;
@@ -156,111 +194,167 @@ export interface Sensors {
 			];
 		};
 	};
-	sens_max: number /*  maximal count of sensors (-1 - unlimited) */;
+	/**  maximal count of sensors (-1 - unlimited) */
+	sens_max: number ;
 }
 
 export interface Counters {
-	cfl: number /* calculation flags */;
-	cnm: number /* mileage counter, km or miles */;
-	cneh: number /* engine hours counter, h */;
-	cnkb: number /* GPRS traffic counter, KB */;
+	/** calculation flags */
+	cfl: number;
+	/** mileage counter, km or miles */
+	cnm: number;
+	/** engine hours counter, h */
+	cneh: number;
+	/** GPRS traffic counter, KB */
+	cnkb: number;
 }
 
 export interface Maintenance {
+	/** service intervals */
 	si: {
-		/* service intervals */
+		/** sequence number of service interval */
 		[key: string]: {
-			/* sequence number of service interval */
-			id: number /* ID */;
-			n: string /* name */;
-			t: string /* description */;
-			im: number /* mileage interval */;
-			it: number /* days interval */;
-			ie: number /* engine hours interval */;
-			pm: number /* last service for mileage interval, km */;
-			pt: number /* last service for days interval, sec (UTC) */;
-			pe: number /* last service for engine hours interval, h */;
-			c: number /* done times */;
+			/** ID */
+			id: number;
+			/** name */
+			n: string;
+			/** description */
+			t: string;
+			/** mileage interval */
+			im: number;
+			/** days interval */
+			it: number;
+			/** engine hours interval */
+			ie: number;
+			/** last service for mileage interval, km */
+			pm: number;
+			/** last service for days interval, sec (UTC) */
+			pt: number;
+			/** last service for engine hours interval, h */
+			pe: number;
+			/** done times */
+			c: number;
 		};
 	};
-	simax: number /* maximal count of service intervals (-1 - unlimited) */;
+	/** maximal count of service intervals (-1 - unlimited) */
+	simax: number;
 }
 
 export interface TripDetectorAndFuelConsumption {
+	/** trip detector */
 	rtd: {
-		/* trip detector */
-		type: number /* type of movement detection */;
-		gpsCorrection: number /* allow GPS correction: 0 - no, 1 - yes */;
-		minSat: number /* min satellites count */;
-		minMovingSpeed: number /* min moving speed, km/h */;
-		minStayTime: number /* min parking time, seconds */;
-		maxMessagesDistance: number /* max distance between messages, meters */;
-		minTripTime: number /* min trip time, seconds */;
-		minTripDistance: number /* min trip distance, meters */;
+		/** type of movement detection */
+		type: number;
+		/** allow GPS correction: 0 - no, 1 - yes */
+		gpsCorrection: number;
+		/** min satellites count */
+		minSat: number;
+		/** min moving speed, km/h */
+		minMovingSpeed: number;
+		/** min parking time, seconds */
+		minStayTime: number;
+		/** max distance between messages, meters */
+		maxMessagesDistance: number;
+		/** min trip time, seconds */
+		minTripTime: number;
+		/** min trip distance, meters */
+		minTripDistance: number;
 	};
+	/** fuel consumption */
 	rfc: {
-		/* fuel consumption */
-		calcTypes: number /* type of calculation */;
+		/** type of calculation */
+		calcTypes: number;
+		/** detection of fuel fillings/thefts */
 		fuelLevelParams: {
-			/* detection of fuel fillings/thefts */
-			flags: number /* flags of fillings and thefts */;
-			ignoreStayTimeout: number /* ignore the messages after the start of motion, sec */;
-			minFillingVolume: number /* minimum fuel filling volume, litres */;
-			minTheftTimeout: number /* minimum stay timeout to detect fuel theft, sec */;
-			minTheftVolume: number /* minimum fuel theft volume, litres */;
-			filterQuality: number /* filter quality (0..255) */;
-			fillingsJoinInterval: number /* timeout to separate consecutive fillings, sec */;
-			theftsJoinInterval: number /* timeout to separate consecutive thefts, sec */;
-			extraFillingTimeout: number /* timeout to detect final filling volume, sec */;
+			/** flags of fillings and thefts */
+			flags: number;
+			/** ignore the messages after the start of motion, sec */
+			ignoreStayTimeout: number;
+			/** minimum fuel filling volume, litres */
+			minFillingVolume: number;
+			/** minimum stay timeout to detect fuel theft, sec */
+			minTheftTimeout: number;
+			/** minimum fuel theft volume, litres */
+			minTheftVolume: number;
+			/** filter quality (0..255) */
+			filterQuality: number;
+			/** timeout to separate consecutive fillings, sec */
+			fillingsJoinInterval: number;
+			/** timeout to separate consecutive thefts, sec */
+			theftsJoinInterval: number;
+			/** timeout to detect final filling volume, sec */
+			extraFillingTimeout: number;
 		};
+		/** consumption math */
 		fuelConsMath: {
-			/* consumption math */
-			idling: number /* idling, litres per hour */;
-			urban: number /* urban cycle, litres per 100 km */;
-			suburban: number /* suburban cycle, litres per 100 km */;
+			/** idling, litres per hour */
+			idling: number;
+			/** urban cycle, litres per 100 km */
+			urban: number;
+			/** suburban cycle, litres per 100 km */
+			suburban: number;
 		};
+		/** consumption by rates */
 		fuelConsRates: {
-			/* consumption by rates */
-			consSummer: number /* summer consumption, litres per 100 km */;
-			consWinter: number /* winter consumption, litres per 100 km */;
-			winterMonthFrom: number /* winter from (month: 0-11) */;
-			winterDayFrom: number /* winter from (day 1-31) */;
-			winterMonthTo: number /* winter to (month 0-11) */;
-			winterDayTo: number /* winter to (day 1-31) */;
+			/** summer consumption, litres per 100 km */
+			consSummer: number;
+			/** winter consumption, litres per 100 km */
+			consWinter: number;
+			/** winter from (month: 0-11) */
+			winterMonthFrom: number;
+			/** winter from (day 1-31) */
+			winterDayFrom: number;
+			/** winter to (month 0-11) */
+			winterMonthTo: number;
+			/** winter to (day 1-31) */
+			winterDayTo: number;
 		};
+		/** impulse fuel consumption sensors */
 		fuelConsImpulse: {
-			/* impulse fuel consumption sensors */
-			maxImpulses: number /* max impulses */;
-			skipZero: number /* skip first zero value */;
+			/** max impulses */
+			maxImpulses: number;
+			/** skip first zero value */
+			skipZero: number;
 		};
 	};
 }
 
 export interface Commands {
+	/** list of commands */
 	cml: {
-		/* list of commands */
+		/** sequence number of command */
 		[key: string]: {
-			/* sequence number of command */
-			id: number /* ID */;
-			n: string /* name */;
-			c: string /* type */;
-			l: string /* link type */;
-			p: string /* parameters */;
-			a: number /* access level (access rights that user must have to execute current command) */;
-			f: number /* phone number flags: 0-any (primary, then secondary), 0x1-primary, 0x2-secondary */;
+			/** ID */
+			id: number;
+			/** name */
+			n: string;
+			/** type */
+			c: string;
+			/** link type */
+			l: string;
+			/** parameters */
+			p: string;
+			/** access level (access rights that user must have to execute current command) */
+			a: number;
+			/** phone number flags: 0-any (primary, then secondary), 0x1-primary, 0x2-secondary */
+			f: number;
 		};
 	};
-	cml_max: number /* maximal count of commands (-1 - unlimited)  */;
+	/** maximal count of commands (-1 - unlimited)  */
+	cml_max: number;
 }
 
 export interface MessageParameters {
+	/** list of message parameters */
 	prms: {
-		/* list of message parameters */
+		/** parameter name */
 		[key: string]: {
-			/* parameter name */
-			v: any /* parameter value */;
-			ct: number /* time of last value change */;
-			at: number /* time of last message with such parameter */;
+			/** parameter value */
+			v: any;
+			/** time of last value change */
+			ct: number;
+			/** time of last message with such parameter */
+			at: number;
 		};
 	};
 }
@@ -272,25 +366,35 @@ export interface Connection {
 }
 
 export interface Position {
+	/** last known position */
 	pos: {
-		/* last known position */
-		t: number /* time (UTC) */;
-		y: number /* latitude */;
-		x: number /* longitude */;
-		z: number /* altitude */;
-		s: number /* speed */;
-		c: number /* course */;
-		sc: number /* satellites count */;
+		/** time (UTC) */
+		t: number;
+		/** latitude */
+		y: number;
+		/** longitude */
+		x: number;
+		/** altitude */
+		z: number;
+		/** speed */
+		s: number;
+		/** course */
+		c: number;
+		/** satellites count */
+		sc: number;
 	};
 }
 
 export interface ProfileFields {
 	pflds: {
+		/** field ID */
 		number: {
-			/* field ID */
-			id: number /* field ID */;
-			n: string /* field name */;
-			v: string /* field value */;
+			/** field ID */
+			id: number;
+			/** field name */
+			n: string;
+			/** field value */
+			v: string;
 		};
 	};
 }
