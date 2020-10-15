@@ -20,4 +20,5 @@ __exportStar(require("./item"), exports);
 __exportStar(require("./messages"), exports);
 __exportStar(require("./token"), exports);
 __exportStar(require("./unit"), exports);
+__exportStar(require("./report"), exports);
 __exportStar(require("./utils/Utils"), exports);
