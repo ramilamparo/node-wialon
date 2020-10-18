@@ -95,5 +95,3 @@ export abstract class RemoteAPI {
 		public host: string = defaultHost
 	) {}
 }
-
-RemoteAPI.execute<null, {}>("");

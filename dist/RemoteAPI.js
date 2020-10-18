@@ -57,4 +57,3 @@ RemoteAPI.execute = (svc, params, sid, url = exports.defaultHost) => __awaiter(v
     }
     return res.data;
 });
-RemoteAPI.execute("");

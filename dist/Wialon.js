@@ -43,3 +43,8 @@ Wialon.login = (params, host = RemoteAPI_1.defaultHost) => __awaiter(void 0, voi
     const w = new Wialon(user, host);
     return w;
 });
+Wialon.useAuthHash = (params, host = RemoteAPI_1.defaultHost) => __awaiter(void 0, void 0, void 0, function* () {
+    const user = yield RemoteAPI_1.RemoteAPI.execute("core/use_auth_hash", params);
+    const w = new Wialon(user, host);
+    return w;
+});

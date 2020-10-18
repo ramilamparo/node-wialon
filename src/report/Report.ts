@@ -11,7 +11,7 @@ import {
 
 export class Report extends RemoteAPI {
 	public cleanupResult = async () => {
-		return RemoteAPI.execute<{}, ReportCleanupResultResponse>(
+		return RemoteAPI.execute<ReportCleanupResultResponse>(
 			"report/cleanup_result"
 		);
 	};
