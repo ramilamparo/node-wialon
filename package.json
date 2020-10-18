@@ -9,7 +9,6 @@
 		"lint": "eslint --fix --ext .js,.jsx,.ts,.tsx src --color --config .eslintrc",
 		"format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
 		"build": "tsc",
-		"prepublishOnly": "npm run test:run && npm run lint",
 		"preversion": "npm run lint && npm run build",
 		"postversion": "git push && git push --tags"
 	},
