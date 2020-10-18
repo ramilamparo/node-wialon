@@ -10,11 +10,7 @@ export interface ParamsConfigRow {
         /** level - nesting level; */
         level: number;
         /** flat - show nesting levels on a level with parent: 0 - no, 1 - yes (optional parameter, default - 0); */
-        flat: number;
-        /** from - index of first nested row (optional parameter); */
-        from?: number;
-        /** to - index of last nested row (optional parameter). */
-        to?: number;
+        flat?: number;
     };
 }
 export interface ParamsConfigRange {
@@ -27,9 +23,9 @@ export interface ParamsConfigRange {
         /** level - nesting level; */
         level: number;
         /** flat - show nesting levels on a level with parent: 0 - no, 1 - yes (optional parameter, default - 0); */
-        flat: number;
+        flat?: number;
         /** rawValues - show parameters v, vt: 0 - no, 1 - yes (optional parameter, default - 0). */
-        rawValues: number;
+        rawValues?: number;
     };
 }
 export declare type Response = [{
