@@ -38,7 +38,7 @@ class Wialon extends RemoteAPI_1.RemoteAPI {
     }
 }
 exports.Wialon = Wialon;
-Wialon.tokenlogin = (params, host = RemoteAPI_1.defaultHost) => __awaiter(void 0, void 0, void 0, function* () {
+Wialon.tokenlogin = (params, host) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield RemoteAPI_1.RemoteAPI.execute("token/login", params, null, host);
     const w = new Wialon(user, host);
     return w;
@@ -46,7 +46,7 @@ Wialon.tokenlogin = (params, host = RemoteAPI_1.defaultHost) => __awaiter(void 0
 Wialon.useSession = (sessionId, host) => __awaiter(void 0, void 0, void 0, function* () {
     return new Wialon({ eid: sessionId }, host);
 });
-Wialon.useAuthHash = (params, host = RemoteAPI_1.defaultHost) => __awaiter(void 0, void 0, void 0, function* () {
+Wialon.useAuthHash = (params, host) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield RemoteAPI_1.RemoteAPI.execute("core/use_auth_hash", params);
     const w = new Wialon(user, host);
     return w;
