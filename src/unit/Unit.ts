@@ -13,7 +13,7 @@ export class Unit extends RemoteAPI {
 		return RemoteAPI.execute<UnitGetVinInfoParams, UnitGetVinInfoResponse>(
 			"unit/get_vin_info",
 			params,
-			this.user.eid,
+			this.sessionId,
 			this.host
 		);
 	};
@@ -22,7 +22,7 @@ export class Unit extends RemoteAPI {
 		return RemoteAPI.execute<UnitUpdateServiceIntervalParams, UnitUpdateServiceIntervalResponse>(
 			"unit/update_service_interval",
 			params,
-			this.user.eid,
+			this.sessionId,
 			this.host
 		);
 	};

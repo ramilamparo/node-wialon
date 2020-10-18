@@ -13,10 +13,10 @@ class Messages extends RemoteAPI_1.RemoteAPI {
                 flags: params.flags || 1,
                 flagsMask: params.flagsMask || 65281,
                 loadCount: params.loadCount || 4294967295
-            }, this.user.eid, this.host);
+            }, this.sessionId, this.host);
         };
         this.deleteMessage = (params) => {
-            return RemoteAPI_1.RemoteAPI.execute("messages/delete_message", params, this.user.eid, this.host);
+            return RemoteAPI_1.RemoteAPI.execute("messages/delete_message", params, this.sessionId, this.host);
         };
     }
 }

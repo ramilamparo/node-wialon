@@ -65,7 +65,7 @@ export class Core extends RemoteAPI {
 		return RemoteAPI.execute<CoreSearchItemsParams, Response>(
 			"core/search_items",
 			params,
-			this.user.eid,
+			this.sessionId,
 			this.host
 		);
 	};
@@ -76,7 +76,7 @@ export class Core extends RemoteAPI {
 		return RemoteAPI.execute<CoreSearchItemParams, Response>(
 			"core/search_item",
 			params,
-			this.user.eid,
+			this.sessionId,
 			this.host
 		);
 	};
@@ -86,10 +86,10 @@ export class Core extends RemoteAPI {
 	): Promise<Response> => {
 		const formData = new FormData();
 		formData.append("params", JSON.stringify({ params, flags: 0 }));
-		formData.append("sid", this.user.eid);
+		formData.append("sid", this.sessionId);
 
 		const res = await axios.post<Response>(
-			`${this.host}/wialon/ajax.html?sid=${this.user.eid}&svc=core/batch`,
+			`${this.host}/wialon/ajax.html?sid=${this.sessionId}&svc=core/batch`,
 			formData,
 			{
 				headers: { ...formData.getHeaders() },

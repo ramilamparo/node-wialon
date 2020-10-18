@@ -25,22 +25,26 @@ class Utils extends RemoteAPI_1.RemoteAPI {
                     propName: "sys_name",
                     propValueMask: "*",
                     sortType: "sys_name",
-                    propType: "property"
+                    propType: "property",
                 },
                 force: 1,
                 flags,
                 from: 0,
-                to: 0
-            }, this.user.eid, this.host);
+                to: 0,
+            }, this.sessionId, this.host);
         };
         this.getAddress = ({ lat, lng }, flags = 54321) => __awaiter(this, void 0, void 0, function* () {
+            var _a;
             const formData = new FormData();
-            formData.append("uid", String(this.user.user.id));
-            formData.append("sid", this.user.eid);
+            if (!((_a = this.auth.user) === null || _a === void 0 ? void 0 : _a.id)) {
+                throw new Error("You must login by token or auth hash to perform this action.");
+            }
+            formData.append("uid", String(this.auth.user.id));
+            formData.append("sid", this.sessionId);
             formData.append("flags", String(flags));
             formData.append("coords", JSON.stringify([{ lat, lng }]));
             const res = yield axios_1.default.post(`https://geocode-maps.wialon.com/${this.host.replace("https://", "")}/gis_geocode`, formData, {
-                timeout: 0
+                timeout: 0,
             });
             return res.data;
         });

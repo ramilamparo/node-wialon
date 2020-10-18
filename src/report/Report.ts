@@ -20,7 +20,7 @@ export class Report extends RemoteAPI {
 		return RemoteAPI.execute<ReportExecReportParams, ReportExecReportResponse>(
 			"report/exec_report",
 			params,
-			this.user.eid,
+			this.sessionId,
 			this.host
 		);
 	};
@@ -29,6 +29,6 @@ export class Report extends RemoteAPI {
 		return RemoteAPI.execute<
 			ReportSelectResultRowsParams,
 			ReportSelectResultRowsResponse
-		>("report/select_result_rows", params, this.user.eid, this.user.host);
+		>("report/select_result_rows", params, this.sessionId, this.host);
 	};
 }

@@ -9,7 +9,7 @@ import type { TokenLoginParams, TokenLoginResponse } from "./token";
 import type { UseAuthHashResponse, UseAuthHashParams } from "./core";
 
 export class Wialon extends RemoteAPI {
-	public static login = async (
+	public static tokenlogin = async (
 		params: TokenLoginParams,
 		host: string = defaultHost
 	) => {
@@ -21,6 +21,10 @@ export class Wialon extends RemoteAPI {
 		);
 		const w = new Wialon(user, host);
 		return w;
+	};
+
+	public static useSession = async (sessionId: string, host: string) => {
+		return new Wialon({ eid: sessionId }, host);
 	};
 
 	public static useAuthHash = async (
@@ -36,26 +40,26 @@ export class Wialon extends RemoteAPI {
 	};
 
 	public get Unit() {
-		return new Unit(this.user, this.host);
+		return new Unit(this.auth, this.host);
 	}
 
 	public get Core() {
-		return new Core(this.user, this.host);
+		return new Core(this.auth, this.host);
 	}
 
 	public get Messages() {
-		return new Messages(this.user, this.host);
+		return new Messages(this.auth, this.host);
 	}
 
 	public get Utils() {
-		return new Utils(this.user, this.host);
+		return new Utils(this.auth, this.host);
 	}
 
 	public get Item() {
-		return new Item(this.user, this.host);
+		return new Item(this.auth, this.host);
 	}
 
 	public get Report() {
-		return new Report(this.user, this.host);
+		return new Report(this.auth, this.host);
 	}
 }

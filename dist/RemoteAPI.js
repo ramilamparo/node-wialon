@@ -18,9 +18,15 @@ const form_data_1 = __importDefault(require("form-data"));
 const WialonError_1 = require("./WialonError");
 exports.defaultHost = "https://hst-api.wialon.com/wialon/ajax.html";
 class RemoteAPI {
-    constructor(user, host = exports.defaultHost) {
-        this.user = user;
+    constructor(auth, host = exports.defaultHost) {
+        this.auth = auth;
         this.host = host;
+    }
+    get sessionId() {
+        if (typeof this.auth === "string") {
+            return this.auth;
+        }
+        return this.auth.eid;
     }
 }
 exports.RemoteAPI = RemoteAPI;
@@ -50,7 +56,7 @@ RemoteAPI.execute = (svc, params, sid, url = exports.defaultHost) => __awaiter(v
     }
     const res = yield axios_1.default.post(RemoteAPI.buildUrl(url, svc), formData, {
         headers: Object.assign({}, formData.getHeaders()),
-        timeout: 0
+        timeout: 0,
     });
     if ("error" in res.data) {
         throw new WialonError_1.WialonError(res.data);

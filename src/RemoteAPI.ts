@@ -1,8 +1,8 @@
 import axios from "axios";
 import FormData from "form-data";
 
-import { WialonError, RemoteAPIError }  from "./WialonError";
-import type { SVC }  from "./types";
+import { WialonError, RemoteAPIError } from "./WialonError";
+import type { SVC } from "./types";
 import type { TokenLoginResponse } from "./token";
 
 export const defaultHost = "https://hst-api.wialon.com/wialon/ajax.html";
@@ -32,6 +32,13 @@ interface ExecuteMethod {
 		sid?: string | null,
 		url?: string
 	): Promise<Response>;
+}
+
+export interface RemoteAPIAuth {
+	eid: TokenLoginResponse["eid"];
+	user?: {
+		id: TokenLoginResponse["user"]["id"];
+	};
 }
 
 export abstract class RemoteAPI {
@@ -80,7 +87,7 @@ export abstract class RemoteAPI {
 			formData,
 			{
 				headers: { ...formData.getHeaders() },
-				timeout: 0
+				timeout: 0,
 			}
 		);
 
@@ -91,7 +98,14 @@ export abstract class RemoteAPI {
 	};
 
 	protected constructor(
-		public user: TokenLoginResponse,
+		public auth: RemoteAPIAuth,
 		public host: string = defaultHost
 	) {}
+
+	public get sessionId(): string {
+		if (typeof this.auth === "string") {
+			return this.auth;
+		}
+		return this.auth.eid;
+	}
 }

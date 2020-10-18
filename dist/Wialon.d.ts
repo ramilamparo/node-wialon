@@ -8,7 +8,8 @@ import { RemoteAPI } from "./RemoteAPI";
 import type { TokenLoginParams } from "./token";
 import type { UseAuthHashParams } from "./core";
 export declare class Wialon extends RemoteAPI {
-    static login: (params: TokenLoginParams, host?: string) => Promise<Wialon>;
+    static tokenlogin: (params: TokenLoginParams, host?: string) => Promise<Wialon>;
+    static useSession: (sessionId: string, host: string) => Promise<Wialon>;
     static useAuthHash: (params: UseAuthHashParams, host?: string) => Promise<Wialon>;
     get Unit(): Unit;
     get Core(): Core;

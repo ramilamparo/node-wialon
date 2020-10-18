@@ -9,6 +9,6 @@ export class Item extends RemoteAPI {
 		return RemoteAPI.execute<
 			ItemUpdateProfileFieldParams,
 			ItemUpdateProfileFieldResponse
-		>("item/update_profile_field", params, this.user.eid, this.host);
+		>("item/update_profile_field", params, this.sessionId, this.host);
 	}
 }

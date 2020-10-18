@@ -30,12 +30,12 @@ class Utils extends __1.RemoteAPI {
                 flags,
                 from: 0,
                 to: 0
-            }, this.user.eid, this.host);
+            }, this.sessionId, this.host);
         };
         this.getAddress = ({ lat, lng }, flags = 54321) => __awaiter(this, void 0, void 0, function* () {
             const formData = new FormData();
             formData.append("uid", String(this.user.user.id));
-            formData.append("sid", this.user.eid);
+            formData.append("sid", this.sessionId);
             formData.append("flags", String(flags));
             formData.append("coords", JSON.stringify([{ lat, lng }]));
             const res = yield axios_1.default.post(`https://geocode-maps.wialon.com/${this.host.replace("https://", "")}/gis_geocode`, formData, {

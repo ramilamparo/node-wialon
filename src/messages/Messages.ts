@@ -20,7 +20,7 @@ export class Messages extends RemoteAPI {
 				flagsMask: params.flagsMask || 65281,
 				loadCount: params.loadCount || 4294967295
 			},
-			this.user.eid,
+			this.sessionId,
 			this.host
 		);
 	};
@@ -29,6 +29,6 @@ export class Messages extends RemoteAPI {
 		return RemoteAPI.execute<
 			MessagesDeleteMessageParams,
 			MessagesDeleteMessageResponse
-		>("messages/delete_message", params, this.user.eid, this.host);
+		>("messages/delete_message", params, this.sessionId, this.host);
 	};
 }

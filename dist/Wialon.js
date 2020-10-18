@@ -19,29 +19,32 @@ const Report_1 = require("./report/Report");
 const RemoteAPI_1 = require("./RemoteAPI");
 class Wialon extends RemoteAPI_1.RemoteAPI {
     get Unit() {
-        return new Unit_1.Unit(this.user, this.host);
+        return new Unit_1.Unit(this.auth, this.host);
     }
     get Core() {
-        return new Core_1.Core(this.user, this.host);
+        return new Core_1.Core(this.auth, this.host);
     }
     get Messages() {
-        return new Messages_1.Messages(this.user, this.host);
+        return new Messages_1.Messages(this.auth, this.host);
     }
     get Utils() {
-        return new Utils_1.Utils(this.user, this.host);
+        return new Utils_1.Utils(this.auth, this.host);
     }
     get Item() {
-        return new Item_1.Item(this.user, this.host);
+        return new Item_1.Item(this.auth, this.host);
     }
     get Report() {
-        return new Report_1.Report(this.user, this.host);
+        return new Report_1.Report(this.auth, this.host);
     }
 }
 exports.Wialon = Wialon;
-Wialon.login = (params, host = RemoteAPI_1.defaultHost) => __awaiter(void 0, void 0, void 0, function* () {
+Wialon.tokenlogin = (params, host = RemoteAPI_1.defaultHost) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield RemoteAPI_1.RemoteAPI.execute("token/login", params, null, host);
     const w = new Wialon(user, host);
     return w;
+});
+Wialon.useSession = (sessionId, host) => __awaiter(void 0, void 0, void 0, function* () {
+    return new Wialon({ eid: sessionId }, host);
 });
 Wialon.useAuthHash = (params, host = RemoteAPI_1.defaultHost) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield RemoteAPI_1.RemoteAPI.execute("core/use_auth_hash", params);

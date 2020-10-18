@@ -17,7 +17,7 @@ class Wialon extends RemoteAPI_1.RemoteAPI {
     constructor() {
         super(...arguments);
         this.execute = (svc, params) => __awaiter(this, void 0, void 0, function* () {
-            return RemoteAPI_1.RemoteAPI.execute(svc, params, this.user.eid, this.host);
+            return RemoteAPI_1.RemoteAPI.execute(svc, params, this.sessionId, this.host);
         });
     }
     get Unit() {

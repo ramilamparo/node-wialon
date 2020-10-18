@@ -6,10 +6,10 @@ class Unit extends RemoteAPI_1.RemoteAPI {
     constructor() {
         super(...arguments);
         this.getVinInfo = (params) => {
-            return RemoteAPI_1.RemoteAPI.execute("unit/get_vin_info", params, this.user.eid, this.host);
+            return RemoteAPI_1.RemoteAPI.execute("unit/get_vin_info", params, this.sessionId, this.host);
         };
         this.updateServiceInterval = (params) => {
-            return RemoteAPI_1.RemoteAPI.execute("unit/update_service_interval", params, this.user.eid, this.host);
+            return RemoteAPI_1.RemoteAPI.execute("unit/update_service_interval", params, this.sessionId, this.host);
         };
     }
 }

@@ -18,10 +18,10 @@ class Report extends RemoteAPI_1.RemoteAPI {
             return RemoteAPI_1.RemoteAPI.execute("report/cleanup_result");
         });
         this.execReport = (params) => __awaiter(this, void 0, void 0, function* () {
-            return RemoteAPI_1.RemoteAPI.execute("report/exec_report", params, this.user.eid, this.host);
+            return RemoteAPI_1.RemoteAPI.execute("report/exec_report", params, this.sessionId, this.host);
         });
         this.selectResultRows = (params) => __awaiter(this, void 0, void 0, function* () {
-            return RemoteAPI_1.RemoteAPI.execute("report/select_result_rows", params, this.user.eid, this.user.host);
+            return RemoteAPI_1.RemoteAPI.execute("report/select_result_rows", params, this.sessionId, this.host);
         });
     }
 }

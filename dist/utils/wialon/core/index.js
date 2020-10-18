@@ -19,16 +19,16 @@ class Core extends __1.RemoteAPI {
     constructor() {
         super(...arguments);
         this.searchItems = (params) => {
-            return __1.Wialon.execute("core/search_items", params, this.user.eid, this.host);
+            return __1.Wialon.execute("core/search_items", params, this.sessionId, this.host);
         };
         this.searchItem = (params) => {
-            return __1.Wialon.execute("core/search_item", params, this.user.eid, this.host);
+            return __1.Wialon.execute("core/search_item", params, this.sessionId, this.host);
         };
         this.batch = (params) => __awaiter(this, void 0, void 0, function* () {
             const formData = new form_data_1.default();
             formData.append("params", JSON.stringify({ params, flags: 0 }));
-            formData.append("sid", this.user.eid);
-            const res = yield axios_1.default.post(`${this.host}/wialon/ajax.html?sid=${this.user.eid}&svc=core/batch`, formData, {
+            formData.append("sid", this.sessionId);
+            const res = yield axios_1.default.post(`${this.host}/wialon/ajax.html?sid=${this.sessionId}&svc=core/batch`, formData, {
                 headers: Object.assign({}, formData.getHeaders()),
                 timeout: 0
             });
