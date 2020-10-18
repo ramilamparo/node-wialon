@@ -10,3 +10,4 @@ export * from "./token";
 export * from "./unit";
 export * from "./report";
 export * from "./utils/Utils";
+export * from "./format";
