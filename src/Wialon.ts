@@ -77,7 +77,8 @@ export class Wialon extends RemoteAPI {
 	};
 
 	public avlEvts = async () => {
-		return axios.post(`${this.host}/avl_evts?sid=${this.auth.eid}`);
+		const baseURL = new URL(this.host)
+		return axios.post(`${baseURL.protocol}//${baseURL.host}/avl_evts?sid=${this.auth.eid}`);
 	};
 
 	public get Unit() {

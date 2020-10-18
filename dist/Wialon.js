@@ -30,7 +30,8 @@ class Wialon extends RemoteAPI_1.RemoteAPI {
             return new Wialon(response, params === null || params === void 0 ? void 0 : params.host);
         });
         this.avlEvts = () => __awaiter(this, void 0, void 0, function* () {
-            return axios_1.default.post(`${this.host}/avl_evts?sid=${this.auth.eid}`);
+            const baseURL = new URL(this.host);
+            return axios_1.default.post(`${baseURL.protocol}//${baseURL.host}/avl_evts?sid=${this.auth.eid}`);
         });
     }
     get Unit() {
