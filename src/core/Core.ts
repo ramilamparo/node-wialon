@@ -6,12 +6,16 @@ import { RemoteAPI } from "../RemoteAPI";
 import type { Params as CoreBatchParams } from "./batch";
 import type {
 	Params as CoreSearchItemsParams,
-	Response as CoreSearchItemsResponse
+	Response as CoreSearchItemsResponse,
 } from "./search_items";
 import type {
 	Params as CoreSearchItemParams,
-	Response as CoreSearchItemResponse
+	Response as CoreSearchItemResponse,
 } from "./search_item";
+import type {
+	Params as CoreDuplicateParams,
+	Response as CoreDuplicateResponse,
+} from "./duplicate";
 import type {
 	LastMessagePosition,
 	AdministrativeFields,
@@ -32,7 +36,7 @@ import type {
 	ProfileFields,
 	Sensors,
 	TripDetectorAndFuelConsumption,
-	UnitImage
+	UnitImage,
 } from "../format/Units";
 
 type PossibleResponse = Partial<
@@ -81,6 +85,18 @@ export class Core extends RemoteAPI {
 		);
 	};
 
+	public duplicate = (params?: Partial<CoreDuplicateParams>) => {
+		const combinedParams: CoreDuplicateParams = {
+			operateAs: "",
+			...params,
+		};
+		return RemoteAPI.execute<CoreDuplicateParams, CoreDuplicateResponse>(
+			"core/duplicate",
+			combinedParams,
+			this.sessionId
+		);
+	};
+
 	public batch = async <Params, Response>(
 		params: CoreBatchParams<Params>
 	): Promise<Response> => {
@@ -93,7 +109,7 @@ export class Core extends RemoteAPI {
 			formData,
 			{
 				headers: { ...formData.getHeaders() },
-				timeout: 0
+				timeout: 0,
 			}
 		);
 

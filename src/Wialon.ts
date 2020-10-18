@@ -6,7 +6,7 @@ import { Item } from "./item/Item";
 import { Report } from "./report/Report";
 import { RemoteAPI } from "./RemoteAPI";
 import type { TokenLoginParams, TokenLoginResponse } from "./token";
-import type { UseAuthHashResponse, UseAuthHashParams } from "./core";
+import type { CoreUseAuthHashResponse, CoreUseAuthHashParams } from "./core";
 
 export class Wialon extends RemoteAPI {
 	public static tokenlogin = async (
@@ -28,12 +28,12 @@ export class Wialon extends RemoteAPI {
 	};
 
 	public static useAuthHash = async (
-		params: UseAuthHashParams,
+		params: CoreUseAuthHashParams,
 		host?: string
 	) => {
 		const user = await RemoteAPI.execute<
-			UseAuthHashParams,
-			UseAuthHashResponse
+			CoreUseAuthHashParams,
+			CoreUseAuthHashResponse
 		>("core/use_auth_hash", params);
 		const w = new Wialon(user, host);
 		return w;

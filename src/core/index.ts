@@ -8,9 +8,13 @@ import type {
 	Response as CoreSearchItemResponse,
 } from "./search_item";
 import type {
-	Params as UseAuthHashParams,
-	Response as UseAuthHashResponse,
+	Params as CoreUseAuthHashParams,
+	Response as CoreUseAuthHashResponse,
 } from "./use_auth_hash";
+import type {
+	Params as CoreDuplicateParams,
+	Response as CoreDuplicateResponse,
+} from "./duplicate";
 import { Core } from "./Core";
 
 export {
@@ -20,6 +24,8 @@ export {
 	CoreSearchItemParams,
 	CoreSearchItemResponse,
 	CoreSearchItemsResponse,
-	UseAuthHashParams,
-	UseAuthHashResponse,
+	CoreUseAuthHashParams,
+	CoreUseAuthHashResponse,
+	CoreDuplicateParams,
+	CoreDuplicateResponse,
 };
