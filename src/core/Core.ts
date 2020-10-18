@@ -12,50 +12,29 @@ import type {
 	Params as CoreSearchItemParams,
 	Response as CoreSearchItemResponse,
 } from "./search_item";
-import type {
-	LastMessagePosition,
-	AdministrativeFields,
-	AdvancedProperties,
-	AvailableCommands,
-	Billing,
-	Commands,
-	Connection,
-	Counters,
-	CustomFields,
-	CustomProperties,
-	GUID,
-	GeneralProperties,
-	Maintenance,
-	Message,
-	MessageParameters,
-	Position,
-	ProfileFields,
-	Sensors,
-	TripDetectorAndFuelConsumption,
-	UnitImage,
-} from "../format/Units";
+import type { UnitsDataFormat } from "../format/Units";
 
 type PossibleResponse = Partial<
-	LastMessagePosition &
-		AdministrativeFields &
-		AdvancedProperties &
-		AvailableCommands &
-		Billing &
-		Commands &
-		Connection &
-		Counters &
-		CustomFields &
-		CustomProperties &
-		GUID &
-		GeneralProperties &
-		Maintenance &
-		Message &
-		MessageParameters &
-		Position &
-		ProfileFields &
-		Sensors &
-		TripDetectorAndFuelConsumption &
-		UnitImage
+	UnitsDataFormat.LastMessagePosition &
+		UnitsDataFormat.AdministrativeFields &
+		UnitsDataFormat.AdvancedProperties &
+		UnitsDataFormat.AvailableCommands &
+		UnitsDataFormat.Billing &
+		UnitsDataFormat.Commands &
+		UnitsDataFormat.Connection &
+		UnitsDataFormat.Counters &
+		UnitsDataFormat.CustomFields &
+		UnitsDataFormat.CustomProperties &
+		UnitsDataFormat.GUID &
+		UnitsDataFormat.GeneralProperties &
+		UnitsDataFormat.Maintenance &
+		UnitsDataFormat.Message &
+		UnitsDataFormat.MessageParameters &
+		UnitsDataFormat.Position &
+		UnitsDataFormat.ProfileFields &
+		UnitsDataFormat.Sensors &
+		UnitsDataFormat.TripDetectorAndFuelConsumption &
+		UnitsDataFormat.UnitImage
 >;
 
 export class Core extends RemoteAPI {
