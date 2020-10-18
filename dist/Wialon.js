@@ -8,8 +8,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Wialon = void 0;
+const axios_1 = __importDefault(require("axios"));
 const Core_1 = require("./core/Core");
 const Messages_1 = require("./messages/Messages");
 const Utils_1 = require("./utils/Utils");
@@ -24,6 +28,9 @@ class Wialon extends RemoteAPI_1.RemoteAPI {
             const combinedParams = Object.assign({ operateAs: "" }, params);
             const response = yield RemoteAPI_1.RemoteAPI.execute("core/duplicate", combinedParams, this.sessionId);
             return new Wialon(response, params === null || params === void 0 ? void 0 : params.host);
+        });
+        this.avlEvts = () => __awaiter(this, void 0, void 0, function* () {
+            return axios_1.default.post(`${this.host}/avl_evts?sid=${this.auth.eid}`);
         });
     }
     get Unit() {

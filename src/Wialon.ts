@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Core } from "./core/Core";
 import { Messages } from "./messages/Messages";
 import { Utils } from "./utils/Utils";
@@ -12,6 +13,22 @@ import type {
 	CoreDuplicateParams,
 	CoreDuplicateResponse,
 } from "./core";
+
+export interface AvlEvtsResponse {
+	/** server time */
+	tm: number;
+	/** events */
+	events: [
+		{
+			/** item ID */
+			i: number;
+			/** event type: m - message, u - update, d - delete */
+			t: string;
+			/** description of event, depends on event type */
+			d: any;
+		}
+	];
+}
 
 export class Wialon extends RemoteAPI {
 	public static tokenlogin = async (
@@ -57,6 +74,10 @@ export class Wialon extends RemoteAPI {
 		>("core/duplicate", combinedParams, this.sessionId);
 
 		return new Wialon(response, params?.host);
+	};
+
+	public avlEvts = async () => {
+		return axios.post(`${this.host}/avl_evts?sid=${this.auth.eid}`);
 	};
 
 	public get Unit() {
