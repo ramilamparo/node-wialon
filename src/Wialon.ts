@@ -5,14 +5,32 @@ import { Unit } from "./unit/Unit";
 import { Item } from "./item/Item";
 import { Report } from "./report/Report";
 import { RemoteAPI, defaultHost } from "./RemoteAPI";
-import { TokenLoginParams } from "./token";
+import type { TokenLoginParams, TokenLoginResponse } from "./token";
+import type { UseAuthHashResponse, UseAuthHashParams } from "./core";
 
 export class Wialon extends RemoteAPI {
 	public static login = async (
 		params: TokenLoginParams,
 		host: string = defaultHost
 	) => {
-		const user = await RemoteAPI.execute("token/login", params, null, host);
+		const user = await RemoteAPI.execute<TokenLoginParams, TokenLoginResponse>(
+			"token/login",
+			params,
+			null,
+			host
+		);
+		const w = new Wialon(user, host);
+		return w;
+	};
+
+	public static useAuthHash = async (
+		params: UseAuthHashParams,
+		host: string = defaultHost
+	) => {
+		const user = await RemoteAPI.execute<
+			UseAuthHashParams,
+			UseAuthHashResponse
+		>("core/use_auth_hash", params);
 		const w = new Wialon(user, host);
 		return w;
 	};

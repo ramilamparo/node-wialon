@@ -10,7 +10,8 @@ export type SVC =
 	| "unit/update_service_interval"
 	| "report/exec_report"
 	| "report/cleanup_result"
-	| "report/select_result_rows";
+	| "report/select_result_rows"
+	| "core/use_auth_hash";
 
 export enum ProfileField {
 	VEHICLE_TYPE = "vehicle_type",

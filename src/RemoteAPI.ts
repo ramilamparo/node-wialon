@@ -22,7 +22,7 @@ interface ExecuteMethod {
 	): Promise<Response>;
 	<Params = any, Response = any>(
 		svc: string,
-		params?: Params,
+		params: Params,
 		sid?: string | null,
 		url?: string
 	): Promise<Response>;
