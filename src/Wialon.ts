@@ -6,7 +6,12 @@ import { Item } from "./item/Item";
 import { Report } from "./report/Report";
 import { RemoteAPI } from "./RemoteAPI";
 import type { TokenLoginParams, TokenLoginResponse } from "./token";
-import type { CoreUseAuthHashResponse, CoreUseAuthHashParams } from "./core";
+import type {
+	CoreUseAuthHashResponse,
+	CoreUseAuthHashParams,
+	CoreDuplicateParams,
+	CoreDuplicateResponse,
+} from "./core";
 
 export class Wialon extends RemoteAPI {
 	public static tokenlogin = async (
@@ -37,6 +42,21 @@ export class Wialon extends RemoteAPI {
 		>("core/use_auth_hash", params);
 		const w = new Wialon(user, host);
 		return w;
+	};
+
+	public duplicateSession = async (
+		params?: Partial<CoreDuplicateParams> & { host?: string }
+	) => {
+		const combinedParams: CoreDuplicateParams = {
+			operateAs: "",
+			...params,
+		};
+		const response = await RemoteAPI.execute<
+			CoreDuplicateParams,
+			CoreDuplicateResponse
+		>("core/duplicate", combinedParams, this.sessionId);
+
+		return new Wialon(response, params?.host);
 	};
 
 	public get Unit() {

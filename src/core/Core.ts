@@ -13,10 +13,6 @@ import type {
 	Response as CoreSearchItemResponse,
 } from "./search_item";
 import type {
-	Params as CoreDuplicateParams,
-	Response as CoreDuplicateResponse,
-} from "./duplicate";
-import type {
 	LastMessagePosition,
 	AdministrativeFields,
 	AdvancedProperties,
@@ -82,18 +78,6 @@ export class Core extends RemoteAPI {
 			params,
 			this.sessionId,
 			this.host
-		);
-	};
-
-	public duplicate = (params?: Partial<CoreDuplicateParams>) => {
-		const combinedParams: CoreDuplicateParams = {
-			operateAs: "",
-			...params,
-		};
-		return RemoteAPI.execute<CoreDuplicateParams, CoreDuplicateResponse>(
-			"core/duplicate",
-			combinedParams,
-			this.sessionId
 		);
 	};
 

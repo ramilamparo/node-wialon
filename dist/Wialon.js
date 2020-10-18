@@ -18,6 +18,14 @@ const Item_1 = require("./item/Item");
 const Report_1 = require("./report/Report");
 const RemoteAPI_1 = require("./RemoteAPI");
 class Wialon extends RemoteAPI_1.RemoteAPI {
+    constructor() {
+        super(...arguments);
+        this.duplicateSession = (params) => __awaiter(this, void 0, void 0, function* () {
+            const combinedParams = Object.assign({ operateAs: "" }, params);
+            const response = yield RemoteAPI_1.RemoteAPI.execute("core/duplicate", combinedParams, this.sessionId);
+            return new Wialon(response, params === null || params === void 0 ? void 0 : params.host);
+        });
+    }
     get Unit() {
         return new Unit_1.Unit(this.auth, this.host);
     }
