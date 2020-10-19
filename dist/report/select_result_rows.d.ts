@@ -41,11 +41,9 @@ export declare type Response = [{
     t2: number;
     /** quantity of rows with next nesting level */
     d: number;
-    c: [
-    /** cells array text value of cell */
-    string
-    /** or object formatted cell value */
-     | {
+    /** cells array text value of cell
+     * or object formatted cell value */
+    c: Array<string | {
         /** Human readable cell value */
         t: string;
         /** original cell value */
@@ -61,7 +59,7 @@ export declare type Response = [{
         y: number;
         /** longitude */
         x: number;
-    }];
+    }>;
     /** holds subrows which corresponds to requested nesting level,
     set of fields will be the same as parent row has */
     r: Array<{
