@@ -28,6 +28,26 @@ export interface ParamsConfigRange {
         rawValues?: number;
     };
 }
+declare type ReportTableCell = string | {
+    /** Human readable cell value */
+    t: string;
+    /** original cell value */
+    v?: number;
+    /** value type */
+    vt?: number;
+    pi?: {
+        /** property items property items type */
+        t: string;
+        ids: any[];
+    };
+    /** latitude */
+    y: number;
+    /** longitude */
+    x: number;
+};
+declare type RecursiveTableCell = {
+    c?: RecursiveTableCell & ReportTableCell;
+};
 export declare type Response = [{
     /** row index (from 0) */
     n: number;
@@ -43,29 +63,14 @@ export declare type Response = [{
     d: number;
     /** cells array text value of cell
      * or object formatted cell value */
-    c: Array<string | {
-        /** Human readable cell value */
-        t: string;
-        /** original cell value */
-        v?: number;
-        /** value type */
-        vt?: number;
-        pi?: {
-            /** property items property items type */
-            t: string;
-            ids: any[];
-        };
-        /** latitude */
-        y: number;
-        /** longitude */
-        x: number;
-    }>;
+    c: ReportTableCell[];
     /** holds subrows which corresponds to requested nesting level,
     set of fields will be the same as parent row has */
     r: Array<{
         n: number;
         i1: number;
         i2: number;
-        [key: string]: number;
+        c?: RecursiveTableCell;
     }>;
 }];
+export {};
