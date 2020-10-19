@@ -28,7 +28,7 @@ export interface ParamsConfigRange {
         rawValues?: number;
     };
 }
-declare type ReportTableCell = string | {
+declare type ReportTableCell = {
     /** Human readable cell value */
     t: string;
     /** original cell value */
@@ -45,10 +45,8 @@ declare type ReportTableCell = string | {
     /** longitude */
     x: number;
 };
-declare type RecursiveTableCell = {
-    c?: RecursiveTableCell & ReportTableCell;
-};
-export declare type Response = [{
+declare type Row = Omit<ResponseSingle, "c"> & Partial<Pick<ResponseSingle, "c">>;
+declare type ResponseSingle = {
     /** row index (from 0) */
     n: number;
     /** number of first message in specified interval */
@@ -63,14 +61,10 @@ export declare type Response = [{
     d: number;
     /** cells array text value of cell
      * or object formatted cell value */
-    c: ReportTableCell[];
+    c: Array<ReportTableCell | string>;
     /** holds subrows which corresponds to requested nesting level,
-    set of fields will be the same as parent row has */
-    r: Array<{
-        n: number;
-        i1: number;
-        i2: number;
-        c?: RecursiveTableCell;
-    }>;
-}];
+        set of fields will be the same as parent row has */
+    r: Row;
+};
+export declare type Response = ResponseSingle[];
 export {};

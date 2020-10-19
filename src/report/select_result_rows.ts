@@ -30,54 +30,45 @@ export interface ParamsConfigRange {
 	};
 }
 
-type ReportTableCell =
-	| string
-	| {
-			/** Human readable cell value */
-			t: string;
-			/** original cell value */
-			v?: number;
-			/** value type */
-			vt?: number;
-			pi?: {
-				/** property items property items type */
-				t: string;
-				ids: any[];
-			};
-			/** latitude */
-			y: number;
-			/** longitude */
-			x: number;
-	  };
-
-type RecursiveTableCell = {
-	c?: RecursiveTableCell & ReportTableCell;
+type ReportTableCell = {
+	/** Human readable cell value */
+	t: string;
+	/** original cell value */
+	v?: number;
+	/** value type */
+	vt?: number;
+	pi?: {
+		/** property items property items type */
+		t: string;
+		ids: any[];
+	};
+	/** latitude */
+	y: number;
+	/** longitude */
+	x: number;
 };
 
-export type Response = [
-	{
-		/** row index (from 0) */
-		n: number;
-		/** number of first message in specified interval */
-		i1: number;
-		/** number of last message in specified interval */
-		i2: number;
-		/** time of first message in specified interval */
-		t1: number;
-		/** time of last message in specified interval */
-		t2: number;
-		/** quantity of rows with next nesting level */
-		d: number;
-		/** cells array text value of cell
-		 * or object formatted cell value */
-		c: ReportTableCell[];
-		/** holds subrows which corresponds to requested nesting level,
+type Row = Omit<ResponseSingle, "c"> & Partial<Pick<ResponseSingle, "c">>;
+
+type ResponseSingle = {
+	/** row index (from 0) */
+	n: number;
+	/** number of first message in specified interval */
+	i1: number;
+	/** number of last message in specified interval */
+	i2: number;
+	/** time of first message in specified interval */
+	t1: number;
+	/** time of last message in specified interval */
+	t2: number;
+	/** quantity of rows with next nesting level */
+	d: number;
+	/** cells array text value of cell
+	 * or object formatted cell value */
+	c: Array<ReportTableCell | string>;
+	/** holds subrows which corresponds to requested nesting level,
 		set of fields will be the same as parent row has */
-		r: Array<{
-			n: number;
-			i1: number;
-			i2: number;
-			c?: RecursiveTableCell;
-		}>;
-	}
-];
+	r: Row;
+};
+
+export type Response = ResponseSingle[];
