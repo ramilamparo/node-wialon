@@ -68,7 +68,7 @@ type ResponseSingle = {
 	c: Array<ReportTableCell | string>;
 	/** holds subrows which corresponds to requested nesting level,
 		set of fields will be the same as parent row has */
-	r: Row;
+	r: Row[];
 };
 
 export type Response = ResponseSingle[];
