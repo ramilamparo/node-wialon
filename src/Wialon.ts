@@ -45,7 +45,7 @@ export class Wialon extends RemoteAPI {
 		return w;
 	};
 
-	public static useSession = async (sessionId: string, host?: string) => {
+	public static useSession = (sessionId: string, host?: string) => {
 		return new Wialon({ eid: sessionId }, host);
 	};
 
@@ -77,8 +77,10 @@ export class Wialon extends RemoteAPI {
 	};
 
 	public avlEvts = async () => {
-		const baseURL = new URL(this.host)
-		return axios.post(`${baseURL.protocol}//${baseURL.host}/avl_evts?sid=${this.auth.eid}`);
+		const baseURL = new URL(this.host);
+		return axios.post(
+			`${baseURL.protocol}//${baseURL.host}/avl_evts?sid=${this.auth.eid}`
+		);
 	};
 
 	public get Unit() {
