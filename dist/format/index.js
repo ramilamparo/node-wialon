@@ -13,3 +13,4 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./Messages"), exports);
 __exportStar(require("./Resources"), exports);
 __exportStar(require("./Units"), exports);
+__exportStar(require("./UnitGroups"), exports);
