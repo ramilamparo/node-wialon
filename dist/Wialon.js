@@ -59,9 +59,9 @@ Wialon.tokenlogin = (params, host) => __awaiter(void 0, void 0, void 0, function
     const w = new Wialon(user, host);
     return w;
 });
-Wialon.useSession = (sessionId, host) => __awaiter(void 0, void 0, void 0, function* () {
+Wialon.useSession = (sessionId, host) => {
     return new Wialon({ eid: sessionId }, host);
-});
+};
 Wialon.useAuthHash = (params, host) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield RemoteAPI_1.RemoteAPI.execute("core/use_auth_hash", params);
     const w = new Wialon(user, host);

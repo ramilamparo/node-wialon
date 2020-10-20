@@ -22,7 +22,7 @@ export interface AvlEvtsResponse {
 }
 export declare class Wialon extends RemoteAPI {
     static tokenlogin: (params: TokenLoginParams, host?: string | undefined) => Promise<Wialon>;
-    static useSession: (sessionId: string, host?: string | undefined) => Promise<Wialon>;
+    static useSession: (sessionId: string, host?: string | undefined) => Wialon;
     static useAuthHash: (params: CoreUseAuthHashParams, host?: string | undefined) => Promise<Wialon>;
     duplicateSession: (params?: (Partial<CoreDuplicateParams> & {
         host?: string | undefined;
