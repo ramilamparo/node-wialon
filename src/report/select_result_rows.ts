@@ -30,7 +30,7 @@ export interface ParamsConfigRange {
 	};
 }
 
-type ReportTableCell = {
+export type ReportTableCell = {
 	/** Human readable cell value */
 	t: string;
 	/** original cell value */
@@ -48,9 +48,10 @@ type ReportTableCell = {
 	x: number;
 };
 
-type Row = Omit<ResponseSingle, "c"> & Partial<Pick<ResponseSingle, "c">>;
+export type Row = Omit<ResponseSingle, "c"> &
+	Partial<Pick<ResponseSingle, "c">>;
 
-type ResponseSingle = {
+export type ResponseSingle = {
 	/** row index (from 0) */
 	n: number;
 	/** number of first message in specified interval */
