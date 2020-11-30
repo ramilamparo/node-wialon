@@ -549,4 +549,74 @@ export declare namespace ResourcesDataFormat {
         /** maximal count of geofences groups (-1 - unlimited) */
         zgmax: number;
     }
+    /**	Tags (passengers)
+     * Flag - 0x00200000
+     */
+    interface Tags {
+        item: {
+            tags: {
+                [key: string]: {
+                    /** tag id */
+                    id: number;
+                    /** tag name */
+                    n: string;
+                    /** tag code */
+                    c: string;
+                    /** custom fields, key:value */
+                    jp: {
+                        [key: string]: string;
+                    };
+                    /** image aspect ratio */
+                    r: number;
+                    /** check sum (CRC16) */
+                    ck: string;
+                    /** binded unit */
+                    bu: number;
+                    /** previous binded unit */
+                    pu: number;
+                    /** last binding/unbinding time */
+                    bt: number;
+                    /** time zone */
+                    tz: number;
+                    /** automatic time unbinding  */
+                    art: number;
+                    pos: {
+                        /** latitude */
+                        y: number;
+                        /** longitude */
+                        x: number;
+                    };
+                };
+            };
+            tagsmax: -1;
+        };
+    }
+    /**
+     * Automatic binding list of units (for tags)
+     *	Flag - 0x00400000
+     */
+    interface AutomaticBindingListOfUnits {
+        /** array of units ID's for automatic binding */
+        tagrun: number[];
+    }
+    /**
+     * Tags groups(passengers)
+     * Flag - 0x00800000
+     */
+    interface TagGroups {
+        tagsgr: {
+            [key: string]: {
+                /** group ID */
+                id: number;
+                /** group name */
+                n: string;
+                /** description */
+                d: string;
+                /** tags ID's array */
+                tgs: [number];
+            };
+        };
+        /** maximum number of groups */
+        tagsgrmax: -1;
+    }
 }

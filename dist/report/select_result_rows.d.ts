@@ -28,7 +28,7 @@ export interface ParamsConfigRange {
         rawValues?: number;
     };
 }
-declare type ReportTableCell = {
+export declare type ReportTableCell = {
     /** Human readable cell value */
     t: string;
     /** original cell value */
@@ -45,8 +45,8 @@ declare type ReportTableCell = {
     /** longitude */
     x: number;
 };
-declare type Row = Omit<ResponseSingle, "c"> & Partial<Pick<ResponseSingle, "c">>;
-declare type ResponseSingle = {
+export declare type Row = Omit<ResponseSingle, "c"> & Partial<Pick<ResponseSingle, "c">>;
+export declare type ResponseSingle = {
     /** row index (from 0) */
     n: number;
     /** number of first message in specified interval */
@@ -67,4 +67,3 @@ declare type ResponseSingle = {
     r: Row[];
 };
 export declare type Response = ResponseSingle[];
-export {};
