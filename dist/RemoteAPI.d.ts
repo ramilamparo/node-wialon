@@ -7,18 +7,17 @@ interface ExecuteMethod {
     <Params = any, Response = any>(svc: string, params: Params, sid?: string | null, url?: string): Promise<Response>;
     <T extends SVC, Params = any, Response = any>(svc: T, params?: Params, sid?: string | null, url?: string): Promise<Response>;
 }
-export interface RemoteAPIAuth {
-    eid: TokenLoginResponse["eid"];
-    user?: {
-        id: TokenLoginResponse["user"]["id"];
-    };
+export interface RemoteAPIOptions {
+    auth?: TokenLoginResponse;
+    host: string;
 }
 export declare abstract class RemoteAPI {
-    auth: RemoteAPIAuth;
-    host: string;
+    private session;
     static buildUrl: <T extends SVC, Params>(url: string, svc: string | T, params?: Params | undefined, sid?: string | undefined) => string;
     static execute: ExecuteMethod;
-    protected constructor(auth: RemoteAPIAuth, host?: string);
+    options: RemoteAPIOptions;
+    protected constructor(session: string, options?: Partial<RemoteAPIOptions>);
     get sessionId(): string;
+    getAuthDetails: () => Promise<TokenLoginResponse>;
 }
 export {};

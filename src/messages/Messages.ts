@@ -21,7 +21,7 @@ export class Messages extends RemoteAPI {
 				loadCount: params.loadCount || 4294967295,
 			},
 			this.sessionId,
-			this.host
+			this.options.host
 		);
 	};
 
@@ -29,6 +29,6 @@ export class Messages extends RemoteAPI {
 		return RemoteAPI.execute<
 			MessagesDeleteMessageParams,
 			MessagesDeleteMessageResponse
-		>("messages/delete_message", params, this.sessionId, this.host);
+		>("messages/delete_message", params, this.sessionId, this.options.host);
 	};
 }

@@ -4,6 +4,7 @@ import FormData from "form-data";
 import { WialonError, RemoteAPIError } from "./WialonError";
 import type { SVC } from "./types";
 import type { TokenLoginResponse } from "./token";
+import type { CoreDuplicateParams, CoreDuplicateResponse } from "./core";
 
 export const defaultHost = "https://hst-api.wialon.com/wialon/ajax.html";
 
@@ -34,11 +35,9 @@ interface ExecuteMethod {
 	): Promise<Response>;
 }
 
-export interface RemoteAPIAuth {
-	eid: TokenLoginResponse["eid"];
-	user?: {
-		id: TokenLoginResponse["user"]["id"];
-	};
+export interface RemoteAPIOptions {
+	auth?: TokenLoginResponse;
+	host: string;
 }
 
 export abstract class RemoteAPI {
@@ -97,15 +96,32 @@ export abstract class RemoteAPI {
 		return res.data as Response;
 	};
 
+	public options: RemoteAPIOptions;
+
 	protected constructor(
-		public auth: RemoteAPIAuth,
-		public host: string = defaultHost
-	) {}
+		private session: string,
+		options?: Partial<RemoteAPIOptions>
+	) {
+		this.options = { host: defaultHost, ...options };
+	}
 
 	public get sessionId(): string {
-		if (typeof this.auth === "string") {
-			return this.auth;
-		}
-		return this.auth.eid;
+		return this.session;
 	}
+
+	public getAuthDetails = async () => {
+		if (this.options.auth) {
+			return this.options.auth;
+		}
+		const response = await RemoteAPI.execute<
+			CoreDuplicateParams,
+			CoreDuplicateResponse
+		>(
+			"core/duplicate",
+			{ operateAs: "", continueCurrentSession: true },
+			this.sessionId
+		);
+		this.options.auth = response;
+		return response;
+	};
 }

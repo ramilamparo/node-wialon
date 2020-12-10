@@ -18,15 +18,20 @@ const form_data_1 = __importDefault(require("form-data"));
 const WialonError_1 = require("./WialonError");
 exports.defaultHost = "https://hst-api.wialon.com/wialon/ajax.html";
 class RemoteAPI {
-    constructor(auth, host = exports.defaultHost) {
-        this.auth = auth;
-        this.host = host;
+    constructor(session, options) {
+        this.session = session;
+        this.getAuthDetails = () => __awaiter(this, void 0, void 0, function* () {
+            if (this.options.auth) {
+                return this.options.auth;
+            }
+            const response = yield RemoteAPI.execute("core/duplicate", { operateAs: "", continueCurrentSession: true }, this.sessionId);
+            this.options.auth = response;
+            return response;
+        });
+        this.options = Object.assign({ host: exports.defaultHost }, options);
     }
     get sessionId() {
-        if (typeof this.auth === "string") {
-            return this.auth;
-        }
-        return this.auth.eid;
+        return this.session;
     }
 }
 exports.RemoteAPI = RemoteAPI;

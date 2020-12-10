@@ -19,7 +19,7 @@ export class Utils extends RemoteAPI {
 				to: 0,
 			},
 			this.sessionId,
-			this.host
+			this.options.host
 		);
 	};
 
@@ -28,18 +28,14 @@ export class Utils extends RemoteAPI {
 		flags = 54321
 	) => {
 		const formData = new FormData();
-		if (!this.auth.user?.id) {
-			throw new Error(
-				"You must login by token or auth hash to perform this action."
-			);
-		}
-		formData.append("uid", String(this.auth.user.id));
+		const authDetails = await this.getAuthDetails();
+		formData.append("uid", String(authDetails.user.id));
 		formData.append("sid", this.sessionId);
 		formData.append("flags", String(flags));
 		formData.append("coords", JSON.stringify([{ lat, lng }]));
 
 		const res = await axios.post(
-			`https://geocode-maps.wialon.com/${this.host.replace(
+			`https://geocode-maps.wialon.com/${this.options.host.replace(
 				"https://",
 				""
 			)}/gis_geocode`,

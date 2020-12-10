@@ -1,11 +1,11 @@
 import { RemoteAPI } from "../RemoteAPI";
 import type {
 	Params as UnitGetVinInfoParams,
-	Response as UnitGetVinInfoResponse
+	Response as UnitGetVinInfoResponse,
 } from "./get_vin_info";
 import type {
 	Params as UnitUpdateServiceIntervalParams,
-	Response as UnitUpdateServiceIntervalResponse
+	Response as UnitUpdateServiceIntervalResponse,
 } from "./update_service_interval";
 
 export class Unit extends RemoteAPI {
@@ -14,16 +14,19 @@ export class Unit extends RemoteAPI {
 			"unit/get_vin_info",
 			params,
 			this.sessionId,
-			this.host
+			this.options.host
 		);
 	};
 
 	public updateServiceInterval = (params: UnitUpdateServiceIntervalParams) => {
-		return RemoteAPI.execute<UnitUpdateServiceIntervalParams, UnitUpdateServiceIntervalResponse>(
+		return RemoteAPI.execute<
+			UnitUpdateServiceIntervalParams,
+			UnitUpdateServiceIntervalResponse
+		>(
 			"unit/update_service_interval",
 			params,
 			this.sessionId,
-			this.host
+			this.options.host
 		);
 	};
 }

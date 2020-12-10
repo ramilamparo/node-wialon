@@ -4,7 +4,7 @@ exports.Item = void 0;
 const RemoteAPI_1 = require("../RemoteAPI");
 class Item extends RemoteAPI_1.RemoteAPI {
     updateProfileField(params) {
-        return RemoteAPI_1.RemoteAPI.execute("item/update_profile_field", params, this.sessionId, this.host);
+        return RemoteAPI_1.RemoteAPI.execute("item/update_profile_field", params, this.sessionId, this.options.host);
     }
 }
 exports.Item = Item;

@@ -41,12 +41,12 @@ export class Wialon extends RemoteAPI {
 			null,
 			host
 		);
-		const w = new Wialon(user, host);
+		const w = new Wialon(user.eid, { host, auth: user });
 		return w;
 	};
 
 	public static useSession = (sessionId: string, host?: string) => {
-		return new Wialon({ eid: sessionId }, host);
+		return new Wialon(sessionId, { host });
 	};
 
 	public static useAuthHash = async (
@@ -57,8 +57,7 @@ export class Wialon extends RemoteAPI {
 			CoreUseAuthHashParams,
 			CoreUseAuthHashResponse
 		>("core/use_auth_hash", params);
-		const w = new Wialon(user, host);
-		return w;
+		return new Wialon(user.eid, { host, auth: user });
 	};
 
 	public duplicateSession = async (
@@ -73,37 +72,37 @@ export class Wialon extends RemoteAPI {
 			CoreDuplicateResponse
 		>("core/duplicate", combinedParams, this.sessionId);
 
-		return new Wialon(response, params?.host);
+		return new Wialon(response.eid, { host: params?.host, auth: response });
 	};
 
 	public avlEvts = async () => {
-		const baseURL = new URL(this.host);
+		const baseURL = new URL(this.options.host);
 		return axios.post(
-			`${baseURL.protocol}//${baseURL.host}/avl_evts?sid=${this.auth.eid}`
+			`${baseURL.protocol}//${baseURL.host}/avl_evts?sid=${this.sessionId}`
 		);
 	};
 
 	public get Unit() {
-		return new Unit(this.auth, this.host);
+		return new Unit(this.sessionId, this.options);
 	}
 
 	public get Core() {
-		return new Core(this.auth, this.host);
+		return new Core(this.sessionId, this.options);
 	}
 
 	public get Messages() {
-		return new Messages(this.auth, this.host);
+		return new Messages(this.sessionId, this.options);
 	}
 
 	public get Utils() {
-		return new Utils(this.auth, this.host);
+		return new Utils(this.sessionId, this.options);
 	}
 
 	public get Item() {
-		return new Item(this.auth, this.host);
+		return new Item(this.sessionId, this.options);
 	}
 
 	public get Report() {
-		return new Report(this.auth, this.host);
+		return new Report(this.sessionId, this.options);
 	}
 }
