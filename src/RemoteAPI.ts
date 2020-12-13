@@ -102,7 +102,7 @@ export abstract class RemoteAPI {
 		private session: string,
 		options?: Partial<RemoteAPIOptions>
 	) {
-		this.options = { host: defaultHost, ...options };
+		this.options = { ...options, host: options?.host || defaultHost };
 	}
 
 	public get sessionId(): string {

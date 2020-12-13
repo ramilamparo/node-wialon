@@ -28,7 +28,7 @@ class RemoteAPI {
             this.options.auth = response;
             return response;
         });
-        this.options = Object.assign({ host: exports.defaultHost }, options);
+        this.options = Object.assign(Object.assign({}, options), { host: (options === null || options === void 0 ? void 0 : options.host) || exports.defaultHost });
     }
     get sessionId() {
         return this.session;
