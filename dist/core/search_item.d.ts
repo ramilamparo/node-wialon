@@ -4,5 +4,5 @@ export interface Params {
 }
 export interface Response<T> {
     flags: number;
-    item: Partial<T>;
+    item: T;
 }
