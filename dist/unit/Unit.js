@@ -11,6 +11,9 @@ class Unit extends RemoteAPI_1.RemoteAPI {
         this.updateServiceInterval = (params) => {
             return RemoteAPI_1.RemoteAPI.execute("unit/update_service_interval", params, this.sessionId, this.options.host);
         };
+        this.execCmd = (params) => {
+            return RemoteAPI_1.RemoteAPI.execute("unit/exec_cmd", params, this.sessionId, this.options.host);
+        };
     }
 }
 exports.Unit = Unit;

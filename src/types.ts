@@ -6,6 +6,7 @@ export type SVC =
 	| "messages/delete_message"
 	| "core/batch"
 	| "unit/get_vin_info"
+	| "unit/exec_cmd"
 	| "item/update_profile_field"
 	| "unit/update_service_interval"
 	| "report/exec_report"

@@ -26,5 +26,5 @@ export interface Response<T> {
 	totalItemsCount: number;
 	indexFrom: number;
 	indexTo: number;
-	items:T[];
+	items: T[];
 }

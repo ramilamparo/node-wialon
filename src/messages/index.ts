@@ -1,13 +1,13 @@
 import type {
 	Params as MessagesDeleteMessageParams,
-	Response as MessagesDeleteMessageResponse
+	Response as MessagesDeleteMessageResponse,
 } from "./delete_message";
 import type { Params as MessagesLoadIntervalParams } from "./load_interval";
-import { Messages } from "./Messages"
+import { Messages } from "./Messages";
 
 export {
-    Messages,
+	Messages,
 	MessagesDeleteMessageParams,
 	MessagesDeleteMessageResponse,
-	MessagesLoadIntervalParams
+	MessagesLoadIntervalParams,
 };

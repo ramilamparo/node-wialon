@@ -15,27 +15,27 @@ export interface Params {
 
 export type Response = [
 	/** service interval ID */
-	number ,
+	number,
 	{
 		/** service interval ID */
-		id: number ;
+		id: number;
 		/** name */
-		n: string ;
+		n: string;
 		/** description */
-		t: string ;
+		t: string;
 		/** mileage interval */
-		im: number ;
+		im: number;
 		/** days interval */
-		it: number ;
+		it: number;
 		/** engine hours interval */
-		ie: number ;
+		ie: number;
 		/** last service for mileage interval, km */
-		pm: number ;
+		pm: number;
 		/** last service for days interval, sec (UTC) */
-		pt: number ;
+		pt: number;
 		/** last service for engine hours interval, h */
-		pe: number ;
+		pe: number;
 		/** done times */
-		c: number ;
+		c: number;
 	} | null
 ];
