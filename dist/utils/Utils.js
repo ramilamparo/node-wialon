@@ -15,11 +15,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Utils = void 0;
 const axios_1 = __importDefault(require("axios"));
 const RemoteAPI_1 = require("../RemoteAPI");
+const core_1 = require("../core");
 class Utils extends RemoteAPI_1.RemoteAPI {
     constructor() {
         super(...arguments);
         this.getUnits = ({ flags = 1 }) => {
-            return RemoteAPI_1.RemoteAPI.execute("core/search_items", {
+            const core = new core_1.Core(this.sessionId, this.options);
+            return core.searchItems({
                 spec: {
                     itemsType: "avl_unit",
                     propName: "sys_name",
@@ -31,7 +33,7 @@ class Utils extends RemoteAPI_1.RemoteAPI {
                 flags,
                 from: 0,
                 to: 0
-            }, this.sessionId, this.options.host);
+            });
         };
         this.getAddress = ({ lat, lng }, flags = 54321) => __awaiter(this, void 0, void 0, function* () {
             const formData = new FormData();
