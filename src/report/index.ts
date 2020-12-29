@@ -3,11 +3,11 @@ import {
 	ParamsConfigRow as ReportSelectResultRowsParamsConfigRow,
 	ParamsConfigRange as ReportSelectResultRowsParamsConfigRange,
 	Params as ReportSelectResultRowsParams,
-	Response as ReportSelectResultRowsResponse,
+	Response as ReportSelectResultRowsResponse
 } from "./select_result_rows";
 import {
 	Params as ReportExecReportParams,
-	Response as ReportExecReportResponse,
+	Response as ReportExecReportResponse
 } from "./exec_report";
 import { Report } from "./Report";
 
@@ -19,5 +19,5 @@ export {
 	ReportSelectResultRowsResponse,
 	ReportSelectResultRowsParamsConfigRow,
 	ReportSelectResultRowsParamsConfigRange,
-	ReportExecReportResponse,
+	ReportExecReportResponse
 };

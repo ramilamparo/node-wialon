@@ -21,7 +21,7 @@ export enum ProfileField {
 	BRAND = "brand",
 	YEAR = "year",
 	COLOR = "color",
-	MODEL = "model",
+	MODEL = "model"
 }
 
 export type PartialExcept<T, K extends keyof T> = Partial<Omit<T, K>> &

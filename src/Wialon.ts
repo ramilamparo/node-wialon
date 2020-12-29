@@ -11,7 +11,7 @@ import type {
 	CoreUseAuthHashResponse,
 	CoreUseAuthHashParams,
 	CoreDuplicateParams,
-	CoreDuplicateResponse,
+	CoreDuplicateResponse
 } from "./core";
 
 export interface AvlEvtsResponse {
@@ -65,7 +65,7 @@ export class Wialon extends RemoteAPI {
 	) => {
 		const combinedParams: CoreDuplicateParams = {
 			operateAs: "",
-			...params,
+			...params
 		};
 		const response = await RemoteAPI.execute<
 			CoreDuplicateParams,

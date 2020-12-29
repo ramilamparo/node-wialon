@@ -12,7 +12,7 @@ class Messages extends RemoteAPI_1.RemoteAPI {
                 timeTo: params.timeTo,
                 flags: params.flags || 1,
                 flagsMask: params.flagsMask || 65281,
-                loadCount: params.loadCount || 4294967295,
+                loadCount: params.loadCount || 4294967295
             }, this.sessionId, this.options.host);
         };
         this.deleteMessage = (params) => {

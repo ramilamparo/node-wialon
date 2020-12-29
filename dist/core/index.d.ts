@@ -4,4 +4,4 @@ import type { Params as CoreSearchItemParams, Response as CoreSearchItemResponse
 import type { Params as CoreUseAuthHashParams, Response as CoreUseAuthHashResponse } from "./use_auth_hash";
 import type { Params as CoreDuplicateParams, Response as CoreDuplicateResponse } from "./duplicate";
 import { Core } from "./Core";
-export { Core, CoreBatchParams, CoreSearchItemsParams, CoreSearchItemParams, CoreSearchItemResponse, CoreSearchItemsResponse, CoreUseAuthHashParams, CoreUseAuthHashResponse, CoreDuplicateParams, CoreDuplicateResponse, };
+export { Core, CoreBatchParams, CoreSearchItemsParams, CoreSearchItemParams, CoreSearchItemResponse, CoreSearchItemsResponse, CoreUseAuthHashParams, CoreUseAuthHashResponse, CoreDuplicateParams, CoreDuplicateResponse };

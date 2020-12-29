@@ -1,7 +1,7 @@
 import { RemoteAPI } from "../RemoteAPI";
 import type {
 	Params as ItemUpdateProfileFieldParams,
-	Response as ItemUpdateProfileFieldResponse,
+	Response as ItemUpdateProfileFieldResponse
 } from "./update_profile_field";
 
 export class Item extends RemoteAPI {

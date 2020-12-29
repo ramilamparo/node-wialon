@@ -33,7 +33,7 @@ class Core extends RemoteAPI_1.RemoteAPI {
             formData.append("sid", this.sessionId);
             const res = yield axios_1.default.post(`${this.options.host}/wialon/ajax.html?sid=${this.sessionId}&svc=core/batch`, formData, {
                 headers: Object.assign({}, formData.getHeaders()),
-                timeout: 0,
+                timeout: 0
             });
             if (res.data instanceof Array) {
                 const errors = res.data.reduce((batchErrors, value) => {

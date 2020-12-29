@@ -25,12 +25,12 @@ class Utils extends RemoteAPI_1.RemoteAPI {
                     propName: "sys_name",
                     propValueMask: "*",
                     sortType: "sys_name",
-                    propType: "property",
+                    propType: "property"
                 },
                 force: 1,
                 flags,
                 from: 0,
-                to: 0,
+                to: 0
             }, this.sessionId, this.options.host);
         };
         this.getAddress = ({ lat, lng }, flags = 54321) => __awaiter(this, void 0, void 0, function* () {
@@ -41,7 +41,7 @@ class Utils extends RemoteAPI_1.RemoteAPI {
             formData.append("flags", String(flags));
             formData.append("coords", JSON.stringify([{ lat, lng }]));
             const res = yield axios_1.default.post(`https://geocode-maps.wialon.com/${this.options.host.replace("https://", "")}/gis_geocode`, formData, {
-                timeout: 0,
+                timeout: 0
             });
             return res.data;
         });

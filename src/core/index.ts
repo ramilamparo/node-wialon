@@ -1,19 +1,19 @@
 import type { Params as CoreBatchParams } from "./batch";
 import type {
 	Params as CoreSearchItemsParams,
-	Response as CoreSearchItemsResponse,
+	Response as CoreSearchItemsResponse
 } from "./search_items";
 import type {
 	Params as CoreSearchItemParams,
-	Response as CoreSearchItemResponse,
+	Response as CoreSearchItemResponse
 } from "./search_item";
 import type {
 	Params as CoreUseAuthHashParams,
-	Response as CoreUseAuthHashResponse,
+	Response as CoreUseAuthHashResponse
 } from "./use_auth_hash";
 import type {
 	Params as CoreDuplicateParams,
-	Response as CoreDuplicateResponse,
+	Response as CoreDuplicateResponse
 } from "./duplicate";
 import { Core } from "./Core";
 
@@ -27,5 +27,5 @@ export {
 	CoreUseAuthHashParams,
 	CoreUseAuthHashResponse,
 	CoreDuplicateParams,
-	CoreDuplicateResponse,
+	CoreDuplicateResponse
 };

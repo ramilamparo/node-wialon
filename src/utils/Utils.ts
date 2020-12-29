@@ -11,12 +11,12 @@ export class Utils extends RemoteAPI {
 					propName: "sys_name",
 					propValueMask: "*",
 					sortType: "sys_name",
-					propType: "property",
+					propType: "property"
 				},
 				force: 1,
 				flags,
 				from: 0,
-				to: 0,
+				to: 0
 			},
 			this.sessionId,
 			this.options.host
@@ -41,7 +41,7 @@ export class Utils extends RemoteAPI {
 			)}/gis_geocode`,
 			formData,
 			{
-				timeout: 0,
+				timeout: 0
 			}
 		);
 		return res.data;

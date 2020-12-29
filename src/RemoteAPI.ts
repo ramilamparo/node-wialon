@@ -86,7 +86,7 @@ export abstract class RemoteAPI {
 			formData,
 			{
 				headers: { ...formData.getHeaders() },
-				timeout: 0,
+				timeout: 0
 			}
 		);
 
