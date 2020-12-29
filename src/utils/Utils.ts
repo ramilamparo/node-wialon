@@ -1,26 +1,26 @@
 import axios from "axios";
 import { RemoteAPI } from "../RemoteAPI";
+import { Core } from "../core";
+import { UnitsDataFormat } from "../format/Units";
 
 export class Utils extends RemoteAPI {
-	public getUnits = ({ flags = 1 }) => {
-		return RemoteAPI.execute(
-			"core/search_items",
-			{
-				spec: {
-					itemsType: "avl_unit",
-					propName: "sys_name",
-					propValueMask: "*",
-					sortType: "sys_name",
-					propType: "property"
-				},
-				force: 1,
-				flags,
-				from: 0,
-				to: 0
+	public getUnits = <Response = UnitsDataFormat.GeneralProperties>({
+		flags = 1
+	}) => {
+		const core = new Core(this.sessionId, this.options);
+		return core.searchItems<Response>({
+			spec: {
+				itemsType: "avl_unit",
+				propName: "sys_name",
+				propValueMask: "*",
+				sortType: "sys_name",
+				propType: "property"
 			},
-			this.sessionId,
-			this.options.host
-		);
+			force: 1,
+			flags,
+			from: 0,
+			to: 0
+		});
 	};
 
 	public getAddress = async (

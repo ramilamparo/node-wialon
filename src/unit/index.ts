@@ -6,6 +6,10 @@ import type {
 	Params as UnitUpdateServiceIntervalParams,
 	Response as UnitUpdateServiceIntervalResponse
 } from "./update_service_interval";
+import type {
+	Params as UnitExecCmdParams,
+	Response as UnitExecCmdResponse
+} from "./exec_cmd";
 import { Unit } from "./Unit";
 
 export {
@@ -13,5 +17,7 @@ export {
 	UnitGetVinInfoParams,
 	UnitGetVinInfoResponse,
 	UnitUpdateServiceIntervalParams,
-	UnitUpdateServiceIntervalResponse
+	UnitUpdateServiceIntervalResponse,
+	UnitExecCmdParams,
+	UnitExecCmdResponse
 };
