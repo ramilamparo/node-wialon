@@ -31,7 +31,7 @@ export interface AvlEvtsResponse {
 }
 
 export class Wialon extends RemoteAPI {
-	public static tokenlogin = async (
+	public static tokenLogin = async (
 		params: TokenLoginParams,
 		host?: string
 	) => {
