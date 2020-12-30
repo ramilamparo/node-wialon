@@ -41,8 +41,8 @@ export class Wialon extends RemoteAPI {
 			null,
 			host
 		);
-		const w = new Wialon(user.eid, { host, auth: user });
-		return w;
+		const wialon = new Wialon(user.eid, { host, auth: user });
+		return wialon;
 	};
 
 	public static useSession = (sessionId: string, host?: string) => {
