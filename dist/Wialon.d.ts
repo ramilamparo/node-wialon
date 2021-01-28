@@ -27,6 +27,7 @@ export declare class Wialon extends RemoteAPI {
     duplicateSession: (params?: (Partial<CoreDuplicateParams> & {
         host?: string | undefined;
     }) | undefined) => Promise<Wialon>;
+    execute: <Params, Response_1>(svc: string, params: Params) => Promise<Response_1>;
     avlEvts: () => Promise<import("axios").AxiosResponse<any>>;
     get Unit(): Unit;
     get Core(): Core;

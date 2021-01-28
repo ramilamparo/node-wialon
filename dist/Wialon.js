@@ -29,6 +29,9 @@ class Wialon extends RemoteAPI_1.RemoteAPI {
             const response = yield RemoteAPI_1.RemoteAPI.execute("core/duplicate", combinedParams, this.sessionId);
             return new Wialon(response.eid, { host: params === null || params === void 0 ? void 0 : params.host, auth: response });
         });
+        this.execute = (svc, params) => __awaiter(this, void 0, void 0, function* () {
+            return RemoteAPI_1.RemoteAPI.execute(svc, params, this.sessionId, this.options.host);
+        });
         this.avlEvts = () => __awaiter(this, void 0, void 0, function* () {
             const baseURL = new URL(this.options.host);
             return axios_1.default.post(`${baseURL.protocol}//${baseURL.host}/avl_evts?sid=${this.sessionId}`);

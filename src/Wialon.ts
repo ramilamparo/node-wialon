@@ -75,6 +75,15 @@ export class Wialon extends RemoteAPI {
 		return new Wialon(response.eid, { host: params?.host, auth: response });
 	};
 
+	public execute = async <Params, Response>(svc: string, params: Params) => {
+		return RemoteAPI.execute<Params, Response>(
+			svc,
+			params,
+			this.sessionId,
+			this.options.host
+		);
+	};
+
 	public avlEvts = async () => {
 		const baseURL = new URL(this.options.host);
 		return axios.post(
