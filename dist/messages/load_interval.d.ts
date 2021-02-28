@@ -6,3 +6,7 @@ export interface Params {
     flagsMask: number;
     loadCount: number;
 }
+export interface Response<Message> {
+    count: number;
+    messages: Message[];
+}

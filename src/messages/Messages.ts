@@ -4,13 +4,19 @@ import type {
 	Params as MessagesDeleteMessageParams,
 	Response as MessagesDeleteMessageResponse
 } from "./delete_message";
-import type { Params as MessagesLoadIntervalParams } from "./load_interval";
+import type {
+	Params as MessagesLoadIntervalParams,
+	Response as MessagesLoadIntervalResponse
+} from "./load_interval";
 
 export class Messages extends RemoteAPI {
 	public loadInterval = <Response = MessagesDataFormat.MessageWithData>(
 		params: MessagesLoadIntervalParams
 	) => {
-		return RemoteAPI.execute<MessagesLoadIntervalParams, Response>(
+		return RemoteAPI.execute<
+			MessagesLoadIntervalParams,
+			MessagesLoadIntervalResponse<Response>
+		>(
 			"messages/load_interval",
 			{
 				itemId: params.itemId,
