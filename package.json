@@ -1,6 +1,6 @@
 {
 	"name": "node-wialon",
-	"version": "1.10.1",
+	"version": "1.11.0",
 	"description": "A NodeJS wrapper implementation for Wialon Remote API",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
