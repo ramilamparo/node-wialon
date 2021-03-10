@@ -7,7 +7,7 @@ import { Report } from "./report/Report";
 import { RemoteAPI } from "./RemoteAPI";
 import type { TokenLoginParams } from "./token";
 import type { CoreUseAuthHashParams, CoreDuplicateParams } from "./core";
-export interface AvlEvtsResponse {
+export interface AvlEvtsResponse<Data> {
     /** server time */
     tm: number;
     /** events */
@@ -17,7 +17,7 @@ export interface AvlEvtsResponse {
         /** event type: m - message, u - update, d - delete */
         t: string;
         /** description of event, depends on event type */
-        d: any;
+        d: Data;
     }];
 }
 export declare class Wialon extends RemoteAPI {
@@ -28,7 +28,7 @@ export declare class Wialon extends RemoteAPI {
         host?: string | undefined;
     }) | undefined) => Promise<Wialon>;
     execute: <Params, Response_1>(svc: string, params: Params) => Promise<Response_1>;
-    avlEvts: () => Promise<import("axios").AxiosResponse<any>>;
+    avlEvts: <Data = unknown>() => Promise<import("axios").AxiosResponse<AvlEvtsResponse<Data>>>;
     get Unit(): Unit;
     get Core(): Core;
     get Messages(): Messages;

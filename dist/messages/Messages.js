@@ -18,6 +18,9 @@ class Messages extends RemoteAPI_1.RemoteAPI {
         this.deleteMessage = (params) => {
             return RemoteAPI_1.RemoteAPI.execute("messages/delete_message", params, this.sessionId, this.options.host);
         };
+        this.loadLast = (params) => {
+            return RemoteAPI_1.RemoteAPI.execute("messages/load_last", params, this.sessionId, this.options.host);
+        };
     }
 }
 exports.Messages = Messages;

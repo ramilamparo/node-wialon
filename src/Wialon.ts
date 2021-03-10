@@ -14,7 +14,7 @@ import type {
 	CoreDuplicateResponse
 } from "./core";
 
-export interface AvlEvtsResponse {
+export interface AvlEvtsResponse<Data> {
 	/** server time */
 	tm: number;
 	/** events */
@@ -25,7 +25,7 @@ export interface AvlEvtsResponse {
 			/** event type: m - message, u - update, d - delete */
 			t: string;
 			/** description of event, depends on event type */
-			d: any;
+			d: Data;
 		}
 	];
 }
@@ -84,9 +84,9 @@ export class Wialon extends RemoteAPI {
 		);
 	};
 
-	public avlEvts = async () => {
+	public avlEvts = async <Data = unknown>() => {
 		const baseURL = new URL(this.options.host);
-		return axios.post(
+		return axios.post<AvlEvtsResponse<Data>>(
 			`${baseURL.protocol}//${baseURL.host}/avl_evts?sid=${this.sessionId}`
 		);
 	};

@@ -2,6 +2,7 @@ export type SVC =
 	| "token/login"
 	| "core/search_items"
 	| "core/search_item"
+	| "messages/load_last"
 	| "messages/load_interval"
 	| "messages/delete_message"
 	| "core/batch"
