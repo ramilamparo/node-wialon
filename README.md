@@ -23,7 +23,7 @@ type WialonUnitSearchResponse = UnitsDataFormat.GeneralProperties &
 
 const wialon = await Wialon.tokenLogin({ token: WIALON_TOKEN });
 
-/** svc=core/search_items */
+/** svc=core/search_item */
 const itemSearch = await wialon.Core.searchItem<WialonUnitSearchResponse>({
 	id: SOME_UNIT_ID,
 	flags: 1 + 256 + 512 + 1024 + 8192
