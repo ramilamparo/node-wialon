@@ -4,6 +4,7 @@ import { Utils } from "./utils/Utils";
 import { Unit } from "./unit/Unit";
 import { Item } from "./item/Item";
 import { Report } from "./report/Report";
+import { Resource } from "./resource/Resource";
 import { RemoteAPI } from "./RemoteAPI";
 import type { TokenLoginParams } from "./token";
 import type { CoreUseAuthHashParams, CoreDuplicateParams } from "./core";
@@ -35,4 +36,5 @@ export declare class Wialon extends RemoteAPI {
     get Utils(): Utils;
     get Item(): Item;
     get Report(): Report;
+    get Resource(): Resource;
 }

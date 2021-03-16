@@ -5,6 +5,7 @@ import { Utils } from "./utils/Utils";
 import { Unit } from "./unit/Unit";
 import { Item } from "./item/Item";
 import { Report } from "./report/Report";
+import { Resource } from "./resource/Resource";
 import { RemoteAPI } from "./RemoteAPI";
 import type { TokenLoginParams, TokenLoginResponse } from "./token";
 import type {
@@ -113,5 +114,9 @@ export class Wialon extends RemoteAPI {
 
 	public get Report() {
 		return new Report(this.sessionId, this.options);
+	}
+
+	public get Resource() {
+		return new Resource(this.sessionId, this.options);
 	}
 }

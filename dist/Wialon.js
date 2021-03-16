@@ -20,6 +20,7 @@ const Utils_1 = require("./utils/Utils");
 const Unit_1 = require("./unit/Unit");
 const Item_1 = require("./item/Item");
 const Report_1 = require("./report/Report");
+const Resource_1 = require("./resource/Resource");
 const RemoteAPI_1 = require("./RemoteAPI");
 class Wialon extends RemoteAPI_1.RemoteAPI {
     constructor() {
@@ -54,6 +55,9 @@ class Wialon extends RemoteAPI_1.RemoteAPI {
     }
     get Report() {
         return new Report_1.Report(this.sessionId, this.options);
+    }
+    get Resource() {
+        return new Resource_1.Resource(this.sessionId, this.options);
     }
 }
 exports.Wialon = Wialon;
