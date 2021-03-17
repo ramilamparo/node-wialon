@@ -1,4 +1,5 @@
 import axios from "axios";
+import FormData from "form-data";
 import { RemoteAPI } from "../RemoteAPI";
 import { Core } from "../core";
 import { UnitsDataFormat } from "../format/Units";

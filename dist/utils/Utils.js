@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Utils = void 0;
 const axios_1 = __importDefault(require("axios"));
+const form_data_1 = __importDefault(require("form-data"));
 const RemoteAPI_1 = require("../RemoteAPI");
 const core_1 = require("../core");
 class Utils extends RemoteAPI_1.RemoteAPI {
@@ -36,7 +37,7 @@ class Utils extends RemoteAPI_1.RemoteAPI {
             });
         };
         this.getAddress = ({ lat, lng }, flags = 54321) => __awaiter(this, void 0, void 0, function* () {
-            const formData = new FormData();
+            const formData = new form_data_1.default();
             const authDetails = yield this.getAuthDetails();
             formData.append("uid", String(authDetails.user.id));
             formData.append("sid", this.sessionId);
