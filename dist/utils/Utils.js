@@ -43,13 +43,13 @@ class Utils extends RemoteAPI_1.RemoteAPI {
             formData.append("flags", String(params.flags));
             formData.append("coords", JSON.stringify(params.coords));
             if (params.city_radius) {
-                formData.append("flags", String(params.city_radius));
+                formData.append("city_radius", String(params.city_radius));
             }
             if (params.dist_from_unit) {
-                formData.append("flags", String(params.dist_from_unit));
+                formData.append("dist_from_unit", String(params.dist_from_unit));
             }
             if (params.txt_dist) {
-                formData.append("flags", String(params.txt_dist));
+                formData.append("txt_dist", String(params.txt_dist));
             }
             const res = yield axios_1.default.post(`https://geocode-maps.wialon.com/${this.options.host.replace("https://", "")}/gis_geocode`, formData, {
                 timeout: 0

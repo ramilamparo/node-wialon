@@ -2,7 +2,7 @@ import { RemoteAPI } from "../RemoteAPI";
 import { UnitsDataFormat } from "../format/Units";
 export interface UtilsGetAddressCoords {
     lat: number;
-    lng: number;
+    lon: number;
 }
 export interface UtilsGetAddressParams {
     /** array with coordinates */

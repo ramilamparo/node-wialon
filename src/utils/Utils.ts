@@ -6,7 +6,7 @@ import { UnitsDataFormat } from "../format/Units";
 
 export interface UtilsGetAddressCoords {
 	lat: number;
-	lng: number;
+	lon: number;
 }
 
 export interface UtilsGetAddressParams {
@@ -53,13 +53,13 @@ export class Utils extends RemoteAPI {
 		formData.append("flags", String(params.flags));
 		formData.append("coords", JSON.stringify(params.coords));
 		if (params.city_radius) {
-			formData.append("flags", String(params.city_radius));
+			formData.append("city_radius", String(params.city_radius));
 		}
 		if (params.dist_from_unit) {
-			formData.append("flags", String(params.dist_from_unit));
+			formData.append("dist_from_unit", String(params.dist_from_unit));
 		}
 		if (params.txt_dist) {
-			formData.append("flags", String(params.txt_dist));
+			formData.append("txt_dist", String(params.txt_dist));
 		}
 
 		const res = await axios.post<UtilsGetAddressResponse>(
