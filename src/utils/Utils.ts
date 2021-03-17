@@ -17,7 +17,7 @@ export interface UtilsGetAddressParams {
 	/** maximal distance from unit, km (optional). Maximal distance from unit says that if unit is located near a road and there is a city (i.e. city, town, village) within the indicated distance, then in the address you will have the road's name and distance to the city. */
 	dist_from_unit?: number;
 	/**  metrics of maximal distance from unit (optional) */
-	txt_dist?: number;
+	txt_dist?: string;
 	/** flags of output format (see below) */
 	flags: number;
 	/** current user ID  */
@@ -61,12 +61,10 @@ export class Utils extends RemoteAPI {
 		if (params.txt_dist) {
 			formData.append("txt_dist", String(params.txt_dist));
 		}
+		const hostUrl = new URL(this.options.host);
 
 		const res = await axios.post<UtilsGetAddressResponse>(
-			`https://geocode-maps.wialon.com/${this.options.host.replace(
-				"https://",
-				""
-			)}/gis_geocode`,
+			`https://geocode-maps.wialon.com/${hostUrl.host}/gis_geocode`,
 			formData,
 			{
 				timeout: 0
