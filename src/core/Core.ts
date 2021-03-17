@@ -64,7 +64,7 @@ export class Core extends RemoteAPI {
 		formData.append("sid", this.sessionId);
 
 		const res = await axios.post<Response>(
-			`${this.options.host}/wialon/ajax.html?sid=${this.sessionId}&svc=core/batch`,
+			`${this.options.host}?sid=${this.sessionId}&svc=core/batch`,
 			formData,
 			{
 				headers: { ...formData.getHeaders() },
