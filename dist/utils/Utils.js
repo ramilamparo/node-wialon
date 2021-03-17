@@ -51,7 +51,8 @@ class Utils extends RemoteAPI_1.RemoteAPI {
             if (params.txt_dist) {
                 formData.append("txt_dist", String(params.txt_dist));
             }
-            const res = yield axios_1.default.post(`https://geocode-maps.wialon.com/${this.options.host.replace("https://", "")}/gis_geocode`, formData, {
+            const hostUrl = new URL(this.options.host);
+            const res = yield axios_1.default.post(`https://geocode-maps.wialon.com/${hostUrl.host}/gis_geocode`, formData, {
                 timeout: 0
             });
             return res.data;
