@@ -57,7 +57,7 @@ export class Core extends RemoteAPI {
 	};
 
 	public batch = async <Params, Response>(
-		params: CoreBatchParams<Params>
+		params: CoreBatchParams<Params>[]
 	): Promise<Response> => {
 		const formData = new FormData();
 		formData.append("params", JSON.stringify({ params, flags: 0 }));
