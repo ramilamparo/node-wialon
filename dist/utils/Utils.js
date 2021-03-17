@@ -38,8 +38,7 @@ class Utils extends RemoteAPI_1.RemoteAPI {
         };
         this.getAddress = (params) => __awaiter(this, void 0, void 0, function* () {
             const formData = new form_data_1.default();
-            const authDetails = yield this.getAuthDetails();
-            formData.append("uid", String(authDetails.user.id));
+            formData.append("uid", String(params.uid));
             formData.append("sid", this.sessionId);
             formData.append("flags", String(params.flags));
             formData.append("coords", JSON.stringify(params.coords));
