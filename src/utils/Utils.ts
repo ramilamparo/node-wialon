@@ -48,8 +48,7 @@ export class Utils extends RemoteAPI {
 
 	public getAddress = async (params: UtilsGetAddressParams) => {
 		const formData = new FormData();
-		const authDetails = await this.getAuthDetails();
-		formData.append("uid", String(authDetails.user.id));
+		formData.append("uid", String(params.uid));
 		formData.append("sid", this.sessionId);
 		formData.append("flags", String(params.flags));
 		formData.append("coords", JSON.stringify(params.coords));
