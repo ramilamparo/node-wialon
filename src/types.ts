@@ -13,7 +13,10 @@ export type SVC =
 	| "report/exec_report"
 	| "report/cleanup_result"
 	| "report/select_result_rows"
-	| "core/use_auth_hash";
+	| "core/use_auth_hash"
+	| "resource/update_driver"
+	/** Allows svc that are not from the list. https://github.com/Microsoft/TypeScript/issues/29729 */
+	| (string & { fromT?: any });
 
 export enum ProfileField {
 	VEHICLE_TYPE = "vehicle_type",
