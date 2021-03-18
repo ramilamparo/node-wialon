@@ -67,7 +67,8 @@ export class Utils extends RemoteAPI {
 			`https://geocode-maps.wialon.com/${hostUrl.host}/gis_geocode`,
 			formData,
 			{
-				timeout: 0
+				timeout: 0,
+				headers: formData.getHeaders()
 			}
 		);
 
