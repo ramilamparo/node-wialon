@@ -57,7 +57,7 @@ export class Core extends RemoteAPI {
 	public batch = async <Params, Response>(
 		params: CoreBatchParams<Params>[]
 	): Promise<Response> => {
-		const data = RemoteAPI.execute<
+		const data = await RemoteAPI.execute<
 			{
 				params: CoreBatchParams<Params>[];
 				flags: number;
@@ -66,9 +66,9 @@ export class Core extends RemoteAPI {
 		>("core/batch", { params, flags: 0 }, this.sessionId);
 
 		if (data instanceof Array) {
-			const batch: WialonBatchError = data.reduce(
+			const batch: WialonBatchError<Response> = data.reduce(
 				(
-					batchErrors: WialonBatchError,
+					batchErrors: WialonBatchError<Response>,
 					value: WialonError | Response,
 					index
 				) => {
@@ -77,7 +77,7 @@ export class Core extends RemoteAPI {
 					}
 					return batchErrors;
 				},
-				new WialonBatchError()
+				new WialonBatchError(data)
 			);
 			if (batch.hasErrors()) {
 				throw batch;

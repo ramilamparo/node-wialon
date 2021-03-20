@@ -2,8 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.WialonBatchError = void 0;
 class WialonBatchError extends Error {
-    constructor() {
+    constructor(response) {
         super("A batch error has occurred.");
+        this.response = response;
         this.errors = [];
         this.addError = (error, index) => {
             this.errors.push({ error, index });

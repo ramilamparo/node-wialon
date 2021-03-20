@@ -1,7 +1,8 @@
 import { WialonError } from "./WialonError";
-export declare class WialonBatchError extends Error {
+export declare class WialonBatchError<T> extends Error {
+    response: T;
     private errors;
-    constructor();
+    constructor(response: T);
     addError: (error: WialonError, index: number) => void;
     getErrors: () => {
         error: WialonError;

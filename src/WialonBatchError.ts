@@ -1,9 +1,9 @@
 import { WialonError } from "./WialonError";
 
-export class WialonBatchError extends Error {
+export class WialonBatchError<T> extends Error {
 	private errors: Array<{ error: WialonError; index: number }> = [];
 
-	constructor() {
+	constructor(public response: T) {
 		super("A batch error has occurred.");
 	}
 

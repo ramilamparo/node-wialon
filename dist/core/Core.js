@@ -23,14 +23,14 @@ class Core extends RemoteAPI_1.RemoteAPI {
             return RemoteAPI_1.RemoteAPI.execute("core/search_item", params, this.sessionId, this.options.host);
         };
         this.batch = (params) => __awaiter(this, void 0, void 0, function* () {
-            const data = RemoteAPI_1.RemoteAPI.execute("core/batch", { params, flags: 0 }, this.sessionId);
+            const data = yield RemoteAPI_1.RemoteAPI.execute("core/batch", { params, flags: 0 }, this.sessionId);
             if (data instanceof Array) {
                 const batch = data.reduce((batchErrors, value, index) => {
                     if (value && "error" in value) {
                         batchErrors.addError(new WialonError_1.WialonError(value), index);
                     }
                     return batchErrors;
-                }, new WialonBatchError_1.WialonBatchError());
+                }, new WialonBatchError_1.WialonBatchError(data));
                 if (batch.hasErrors()) {
                     throw batch;
                 }
