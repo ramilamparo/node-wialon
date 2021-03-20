@@ -3,12 +3,12 @@ import type {
 	Response as ItemUpdateProfileFieldResponse
 } from "./update_profile_field";
 import type {
-	Params as UpdateCustomFieldParams,
-	BaseParams as UpdateCustomFieldBaseParams,
-	CreateAndUpdateParams as UpdateCustomFieldCreateAndUpdateParams,
-	CreateAndUpdateResponse as UpdateCustomFieldCreateAndUpdateResponse,
-	Response as UpdateCustomFieldResponse,
-	CallMode as UpdateCustomFieldCallMode
+	Params as ItemUpdateCustomFieldParams,
+	BaseParams as ItemUpdateCustomFieldBaseParams,
+	CreateAndUpdateParams as ItemUpdateCustomFieldCreateAndUpdateParams,
+	CreateAndUpdateResponse as ItemUpdateCustomFieldCreateAndUpdateResponse,
+	Response as ItemUpdateCustomFieldResponse,
+	CallMode as ItemUpdateCustomFieldCallMode
 } from "./update_custom_field";
 import { Item } from "./Item";
 
@@ -16,10 +16,10 @@ export {
 	Item,
 	ItemUpdateProfileFieldParams,
 	ItemUpdateProfileFieldResponse,
-	UpdateCustomFieldBaseParams,
-	UpdateCustomFieldParams,
-	UpdateCustomFieldResponse,
-	UpdateCustomFieldCallMode,
-	UpdateCustomFieldCreateAndUpdateParams,
-	UpdateCustomFieldCreateAndUpdateResponse
+	ItemUpdateCustomFieldBaseParams,
+	ItemUpdateCustomFieldParams,
+	ItemUpdateCustomFieldResponse,
+	ItemUpdateCustomFieldCallMode,
+	ItemUpdateCustomFieldCreateAndUpdateParams,
+	ItemUpdateCustomFieldCreateAndUpdateResponse
 };

@@ -2,9 +2,9 @@ import { RemoteAPI } from "../RemoteAPI";
 import type {
 	ItemUpdateProfileFieldParams,
 	ItemUpdateProfileFieldResponse,
-	UpdateCustomFieldParams,
-	UpdateCustomFieldCallMode,
-	UpdateCustomFieldResponse
+	ItemUpdateCustomFieldParams,
+	ItemUpdateCustomFieldCallMode,
+	ItemUpdateCustomFieldResponse
 } from ".";
 
 export class Item extends RemoteAPI {
@@ -15,12 +15,12 @@ export class Item extends RemoteAPI {
 		>("item/update_profile_field", params, this.sessionId, this.options.host);
 	}
 
-	public updateCustomField = <CallMode extends UpdateCustomFieldCallMode>(
-		params: UpdateCustomFieldParams<CallMode>
+	public updateCustomField = <CallMode extends ItemUpdateCustomFieldCallMode>(
+		params: ItemUpdateCustomFieldParams<CallMode>
 	) => {
 		return RemoteAPI.execute<
-			UpdateCustomFieldParams<CallMode>,
-			UpdateCustomFieldResponse<CallMode>
+			ItemUpdateCustomFieldParams<CallMode>,
+			ItemUpdateCustomFieldResponse<CallMode>
 		>("item/update_custom_field", params, this.sessionId, this.options.host);
 	};
 }
