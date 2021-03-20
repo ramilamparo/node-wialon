@@ -1,5 +1,3 @@
-import axios from "axios";
-import FormData from "form-data";
 import { WialonBatchError } from "../WialonBatchError";
 import { WialonError } from "../WialonError";
 import { RemoteAPI } from "../RemoteAPI";
@@ -59,33 +57,32 @@ export class Core extends RemoteAPI {
 	public batch = async <Params, Response>(
 		params: CoreBatchParams<Params>[]
 	): Promise<Response> => {
-		const formData = new FormData();
-		formData.append("params", JSON.stringify({ params, flags: 0 }));
-		formData.append("sid", this.sessionId);
-
-		const res = await axios.post<Response>(
-			`${this.options.host}?sid=${this.sessionId}&svc=core/batch`,
-			formData,
+		const data = RemoteAPI.execute<
 			{
-				headers: { ...formData.getHeaders() },
-				timeout: 0
-			}
-		);
+				params: CoreBatchParams<Params>[];
+				flags: number;
+			},
+			Response
+		>("core/batch", { params, flags: 0 }, this.sessionId);
 
-		if (res.data instanceof Array) {
-			const errors: WialonError[] = res.data.reduce(
-				(batchErrors: WialonError[], value: WialonError | Response) => {
+		if (data instanceof Array) {
+			const batch: WialonBatchError = data.reduce(
+				(
+					batchErrors: WialonBatchError,
+					value: WialonError | Response,
+					index
+				) => {
 					if (value && "error" in value) {
-						batchErrors.push(new WialonError(value));
+						batchErrors.addError(new WialonError(value), index);
 					}
 					return batchErrors;
 				},
-				[]
+				new WialonBatchError()
 			);
-			if (errors.length) {
-				throw new WialonBatchError(errors);
+			if (batch.hasErrors()) {
+				throw batch;
 			}
-			return res.data;
+			return data;
 		}
 		throw new Error("Unknown response.");
 	};
