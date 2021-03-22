@@ -114,16 +114,18 @@ export declare namespace UnitsDataFormat {
     }
     interface AvailableCommands {
         /** array of commands */
-        cmds: [{
-            /** name */
-            n: string;
-            /** access level (access rights that user must have to execute current command) */
-            a: number;
-            /** link type */
-            t: string;
-            /** command type */
-            c: string;
-        }];
+        cmds: [
+            {
+                /** name */
+                n: string;
+                /** access level (access rights that user must have to execute current command) */
+                a: number;
+                /** link type */
+                t: string;
+                /** command type */
+                c: string;
+            }
+        ];
     }
     interface LastMessagePosition {
         pos: {
@@ -171,13 +173,14 @@ export declare namespace UnitsDataFormat {
                 /** validation sensor ID */
                 vs: number;
                 tbl: [
-                /** calculation table */
-                {
-                    /** parameters */
-                    x: number;
-                    a: number;
-                    b: number;
-                }];
+                    /** calculation table */
+                    {
+                        /** parameters */
+                        x: number;
+                        a: number;
+                        b: number;
+                    }
+                ];
             };
         };
         /**  maximal count of sensors (-1 - unlimited) */

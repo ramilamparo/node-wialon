@@ -22,4 +22,7 @@ export interface CreateAndUpdateResponse {
     /** value */
     v: string;
 }
-export declare type Response<CallModeParam extends CallMode> = [number, CallModeParam extends Extract<CallMode, "create" | "update"> ? CreateAndUpdateParams : null];
+export declare type Response<CallModeParam extends CallMode> = [
+    number,
+    CallModeParam extends Extract<CallMode, "create" | "update"> ? CreateAndUpdateParams : null
+];

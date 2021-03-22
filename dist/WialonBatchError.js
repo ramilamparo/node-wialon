@@ -9,12 +9,8 @@ class WialonBatchError extends Error {
         this.addError = (error, index) => {
             this.errors.push({ error, index });
         };
-        this.getErrors = () => {
-            return this.errors;
-        };
-        this.hasErrors = () => {
-            return this.errors.length > 0;
-        };
+        this.getErrors = () => this.errors;
+        this.hasErrors = () => this.errors.length > 0;
     }
 }
 exports.WialonBatchError = WialonBatchError;
