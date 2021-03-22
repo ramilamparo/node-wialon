@@ -38,21 +38,17 @@ type PossibleResponse = Partial<
 export class Core extends RemoteAPI {
 	public searchItems = <Response = PossibleResponse>(
 		params: CoreSearchItemsParams
-	) => {
-		return RemoteAPI.execute<
+	) => RemoteAPI.execute<
 			CoreSearchItemsParams,
 			CoreSearchItemsResponse<Response>
 		>("core/search_items", params, this.sessionId, this.options.host);
-	};
 
 	public searchItem = <Response = PossibleResponse>(
 		params: CoreSearchItemParams
-	) => {
-		return RemoteAPI.execute<
+	) => RemoteAPI.execute<
 			CoreSearchItemParams,
 			CoreSearchItemResponse<Response>
 		>("core/search_item", params, this.sessionId, this.options.host);
-	};
 
 	public batch = async <Params, Response>(
 		params: CoreBatchParams<Params>[]

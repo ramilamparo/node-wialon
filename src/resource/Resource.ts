@@ -8,10 +8,8 @@ import type {
 export class Resource extends RemoteAPI {
 	public updateDriver = <CallMode extends ResourceUpdateDriverCallMode>(
 		params: ResourceUpdateDriverParams<CallMode>
-	): Promise<ResourceUpdateDriverResponse<CallMode>> => {
-		return RemoteAPI.execute<
-			ResourceUpdateDriverParams<CallMode>,
-			ResourceUpdateDriverResponse<CallMode>
-		>("resource/update_driver", params, this.sessionId, this.options.host);
-	};
+	): Promise<ResourceUpdateDriverResponse<CallMode>> => RemoteAPI.execute<
+		ResourceUpdateDriverParams<CallMode>,
+		ResourceUpdateDriverResponse<CallMode>
+	>("resource/update_driver", params, this.sessionId, this.options.host);
 }

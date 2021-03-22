@@ -12,14 +12,16 @@ export interface AvlEvtsResponse<Data> {
     /** server time */
     tm: number;
     /** events */
-    events: [{
-        /** item ID */
-        i: number;
-        /** event type: m - message, u - update, d - delete */
-        t: string;
-        /** description of event, depends on event type */
-        d: Data;
-    }];
+    events: [
+        {
+            /** item ID */
+            i: number;
+            /** event type: m - message, u - update, d - delete */
+            t: string;
+            /** description of event, depends on event type */
+            d: Data;
+        }
+    ];
 }
 export declare class Wialon extends RemoteAPI {
     static tokenLogin: (params: TokenLoginParams, host?: string | undefined) => Promise<Wialon>;

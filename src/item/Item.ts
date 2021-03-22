@@ -17,10 +17,8 @@ export class Item extends RemoteAPI {
 
 	public updateCustomField = <CallMode extends ItemUpdateCustomFieldCallMode>(
 		params: ItemUpdateCustomFieldParams<CallMode>
-	) => {
-		return RemoteAPI.execute<
+	) => RemoteAPI.execute<
 			ItemUpdateCustomFieldParams<CallMode>,
 			ItemUpdateCustomFieldResponse<CallMode>
 		>("item/update_custom_field", params, this.sessionId, this.options.host);
-	};
 }

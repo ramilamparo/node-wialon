@@ -16,12 +16,8 @@ const RemoteAPI_1 = require("../RemoteAPI");
 class Core extends RemoteAPI_1.RemoteAPI {
     constructor() {
         super(...arguments);
-        this.searchItems = (params) => {
-            return RemoteAPI_1.RemoteAPI.execute("core/search_items", params, this.sessionId, this.options.host);
-        };
-        this.searchItem = (params) => {
-            return RemoteAPI_1.RemoteAPI.execute("core/search_item", params, this.sessionId, this.options.host);
-        };
+        this.searchItems = (params) => RemoteAPI_1.RemoteAPI.execute("core/search_items", params, this.sessionId, this.options.host);
+        this.searchItem = (params) => RemoteAPI_1.RemoteAPI.execute("core/search_item", params, this.sessionId, this.options.host);
         this.batch = (params) => __awaiter(this, void 0, void 0, function* () {
             const data = yield RemoteAPI_1.RemoteAPI.execute("core/batch", { params, flags: 0 }, this.sessionId);
             if (data instanceof Array) {

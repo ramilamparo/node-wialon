@@ -73,4 +73,7 @@ export interface CreateAndUpdateResponse {
         x: number;
     };
 }
-export declare type Response<CallModeParam extends CallMode> = [number, CallModeParam extends Extract<"create" | "update", CallMode> ? CreateAndUpdateResponse : null];
+export declare type Response<CallModeParam extends CallMode> = [
+    number,
+    CallModeParam extends Extract<"create" | "update", CallMode> ? CreateAndUpdateResponse : null
+];
