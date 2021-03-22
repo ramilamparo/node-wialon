@@ -10,25 +10,19 @@ import {
 } from "./exec_report";
 
 export class Report extends RemoteAPI {
-	public cleanupResult = async () => {
-		return RemoteAPI.execute<ReportCleanupResultResponse>(
+	public cleanupResult = async () => RemoteAPI.execute<ReportCleanupResultResponse>(
 			"report/cleanup_result"
 		);
-	};
 
-	public execReport = async (params: ReportExecReportParams) => {
-		return RemoteAPI.execute<ReportExecReportParams, ReportExecReportResponse>(
+	public execReport = async (params: ReportExecReportParams) => RemoteAPI.execute<ReportExecReportParams, ReportExecReportResponse>(
 			"report/exec_report",
 			params,
 			this.sessionId,
 			this.options.host
 		);
-	};
 
-	public selectResultRows = async (params: ReportSelectResultRowsParams) => {
-		return RemoteAPI.execute<
+	public selectResultRows = async (params: ReportSelectResultRowsParams) => RemoteAPI.execute<
 			ReportSelectResultRowsParams,
 			ReportSelectResultRowsResponse
 		>("report/select_result_rows", params, this.sessionId, this.options.host);
-	};
 }
