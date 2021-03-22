@@ -14,7 +14,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/engrpork/node-wialon.git"
+		"url": "git+https://github.com/ramilamparo/node-wialon.git"
 	},
 	"keywords": [
 		"wialon"
@@ -22,9 +22,9 @@
 	"author": "Ramil Amparo",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/engrpork/node-wialon/issues"
+		"url": "https://github.com/ramilamparo/node-wialon/issues"
 	},
-	"homepage": "https://github.com/engrpork/node-wialon#readme",
+	"homepage": "https://github.com/ramilamparo/node-wialon#readme",
 	"devDependencies": {
 		"@types/nock": "^11.1.0",
 		"@types/node": "^14.14.35",
