@@ -14,6 +14,7 @@ import type {
 	CoreDuplicateParams,
 	CoreDuplicateResponse
 } from "./core";
+import { Orders } from "./orders";
 
 export interface AvlEvtsResponse<Data> {
 	/** server time */
@@ -75,11 +76,11 @@ export class Wialon extends RemoteAPI {
 	};
 
 	public execute = async <Params, Response>(svc: string, params: Params) => RemoteAPI.execute<Params, Response>(
-			svc,
-			params,
-			this.sessionId,
-			this.options.host
-		);
+		svc,
+		params,
+		this.sessionId,
+		this.options.host
+	);
 
 	public avlEvts = async <Data = unknown>() => {
 		const baseURL = new URL(this.options.host);
@@ -114,5 +115,9 @@ export class Wialon extends RemoteAPI {
 
 	public get Resource() {
 		return new Resource(this.sessionId, this.options);
+	}
+
+	public get Orders() {
+		return new Orders(this.sessionId, this.options);
 	}
 }
