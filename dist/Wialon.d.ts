@@ -8,6 +8,7 @@ import { Resource } from "./resource/Resource";
 import { RemoteAPI } from "./RemoteAPI";
 import type { TokenLoginParams } from "./token";
 import type { CoreUseAuthHashParams, CoreDuplicateParams } from "./core";
+import { Orders } from "./orders";
 export interface AvlEvtsResponse<Data> {
     /** server time */
     tm: number;
@@ -39,4 +40,5 @@ export declare class Wialon extends RemoteAPI {
     get Item(): Item;
     get Report(): Report;
     get Resource(): Resource;
+    get Orders(): Orders;
 }
