@@ -21,24 +21,6 @@ interface AssignParams extends BaseParams {
     u: number;
 }
 
-/**
- * All of the required Fields
- * @n Order Name
- * p.@n Supplier Name
- * p.@v Phone Number 1
- * p.@v Email
- * p.@v Volume
- * p.@v Volume
- * p.@w Weight
- * p.@c Cost
- * p.@d Description
- * p.@t Vehicle Type
- * p.@cid Custom Id
- * @tf Allowed Timeframe - Start, UNIX-time
- * @tt Allowed Timeframe - End, UNIX-time
- * @y latitude
- * @x longitude
- */
 interface CreateParams extends BaseParams {
     p: {
         /** Supplier Name */
