@@ -18,7 +18,7 @@ export interface CreateAndUpdateParams extends BaseParams {
 
 export type Params<
 	CallModeParam extends CallMode
-> = CallModeParam extends Extract<CallMode, "create" | "update">
+	> = CallModeParam extends Extract<CallMode, "create" | "update">
 	? CreateAndUpdateParams
 	: BaseParams;
 
@@ -34,6 +34,6 @@ export interface CreateAndUpdateResponse {
 export type Response<CallModeParam extends CallMode> = [
 	number,
 	CallModeParam extends Extract<CallMode, "create" | "update">
-		? CreateAndUpdateParams
-		: null
+	? CreateAndUpdateParams
+	: null
 ];
