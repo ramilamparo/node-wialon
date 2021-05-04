@@ -14,9 +14,7 @@ const RemoteAPI_1 = require("../RemoteAPI");
 class Report extends RemoteAPI_1.RemoteAPI {
     constructor() {
         super(...arguments);
-        this.cleanupResult = () => __awaiter(this, void 0, void 0, function* () {
-            return RemoteAPI_1.RemoteAPI.execute("report/cleanup_result");
-        });
+        this.cleanupResult = () => __awaiter(this, void 0, void 0, function* () { return RemoteAPI_1.RemoteAPI.execute("report/cleanup_result"); });
         this.execReport = (params) => __awaiter(this, void 0, void 0, function* () {
             return RemoteAPI_1.RemoteAPI.execute("report/exec_report", params, this.sessionId, this.options.host);
         });
