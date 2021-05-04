@@ -7,7 +7,9 @@ import {
 } from "./select_result_rows";
 import {
 	Params as ReportExecReportParams,
-	Response as ReportExecReportResponse
+	Response as ReportExecReportResponse,
+	ExecResponse as ReportExecReportExecResponse,
+	RemoteExecResponse as ReportExecRemoteReportExecResponse
 } from "./exec_report";
 import { Response as ReportGetReportStatusResponse } from "./get_report_status";
 import { Response as ReportApplyReportResultResponse } from "./apply_report_result";
@@ -17,6 +19,8 @@ export {
 	Report,
 	ReportCleanupResultResponse,
 	ReportExecReportParams,
+	ReportExecReportExecResponse,
+	ReportExecRemoteReportExecResponse,
 	ReportSelectResultRowsParams,
 	ReportSelectResultRowsResponse,
 	ReportSelectResultRowsParamsConfigRow,

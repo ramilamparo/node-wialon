@@ -1,3 +1,3 @@
-import { Response as ReportExecReportResponse } from "./exec_report";
+import { ExecResponse as ReportExecReportExecResponse } from "./exec_report";
 
-export type Response = ReportExecReportResponse;
+export type Response = ReportExecReportExecResponse;

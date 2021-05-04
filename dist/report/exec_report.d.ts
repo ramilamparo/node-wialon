@@ -9,9 +9,10 @@ export interface Params {
         flags: number;
     };
     reportTemplate?: object;
-    remoteExec?: 1;
+    remoteExec?: 1 | 0;
 }
-export interface Response {
+export declare type Response<T extends Params> = T extends RemoteExecResponse ? RemoteExecResponse : ExecResponse;
+export interface ExecResponse {
     /** report execution result */
     reportResult: {
         /** messages loaded: 0 - no, 1 - yes */
@@ -90,4 +91,7 @@ export interface Response {
     };
     /** quantity of layers to be merged in report layer */
     layerCount: number;
+}
+export interface RemoteExecResponse {
+    remoteExec: 1;
 }

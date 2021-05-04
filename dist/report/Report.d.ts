@@ -5,8 +5,8 @@ import { Params as ReportExecReportParams, Response as ReportExecReportResponse 
 import { Response as ReportGetReportStatusResponse } from "./get_report_status";
 export declare class Report extends RemoteAPI {
     cleanupResult: () => Promise<ReportCleanupResultResponse>;
-    execReport: (params: ReportExecReportParams) => Promise<ReportExecReportResponse>;
+    execReport: <T extends ReportExecReportParams>(params: T) => Promise<ReportExecReportResponse<T>>;
     selectResultRows: (params: ReportSelectResultRowsParams) => Promise<ReportSelectResultRowsResponse>;
     getReportStatus: () => Promise<ReportGetReportStatusResponse>;
-    applyReportResult: () => Promise<ReportExecReportResponse>;
+    applyReportResult: () => Promise<import("./exec_report").ExecResponse>;
 }

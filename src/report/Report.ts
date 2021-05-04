@@ -15,8 +15,8 @@ export class Report extends RemoteAPI {
 	public cleanupResult = async () =>
 		RemoteAPI.execute<ReportCleanupResultResponse>("report/cleanup_result");
 
-	public execReport = async (params: ReportExecReportParams) =>
-		RemoteAPI.execute<ReportExecReportParams, ReportExecReportResponse>(
+	public execReport = async <T extends ReportExecReportParams>(params: T) =>
+		RemoteAPI.execute<ReportExecReportParams, ReportExecReportResponse<T>>(
 			"report/exec_report",
 			params,
 			this.sessionId,
