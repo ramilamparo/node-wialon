@@ -13,14 +13,16 @@ import type {
 } from "./exec_cmd";
 
 export class Unit extends RemoteAPI {
-	public getVinInfo = (params: UnitGetVinInfoParams) => RemoteAPI.execute<UnitGetVinInfoParams, UnitGetVinInfoResponse>(
+	public getVinInfo = (params: UnitGetVinInfoParams) =>
+		RemoteAPI.execute<UnitGetVinInfoParams, UnitGetVinInfoResponse>(
 			"unit/get_vin_info",
 			params,
 			this.sessionId,
 			this.options.host
 		);
 
-	public updateServiceInterval = (params: UnitUpdateServiceIntervalParams) => RemoteAPI.execute<
+	public updateServiceInterval = (params: UnitUpdateServiceIntervalParams) =>
+		RemoteAPI.execute<
 			UnitUpdateServiceIntervalParams,
 			UnitUpdateServiceIntervalResponse
 		>(
@@ -30,7 +32,8 @@ export class Unit extends RemoteAPI {
 			this.options.host
 		);
 
-	public execCmd = (params: UnitExecCmdParams) => RemoteAPI.execute<UnitExecCmdParams, UnitExecCmdResponse>(
+	public execCmd = (params: UnitExecCmdParams) =>
+		RemoteAPI.execute<UnitExecCmdParams, UnitExecCmdResponse>(
 			"unit/exec_cmd",
 			params,
 			this.sessionId,

@@ -1,4 +1,6 @@
 export class WialonError extends Error {
+	public errorCode: number;
+
 	public static getMessage(errorCode?: number): string {
 		switch (errorCode) {
 			case 1:
@@ -50,9 +52,10 @@ export class WialonError extends Error {
 
 	constructor(error: RemoteAPIError) {
 		super(WialonError.getMessage(error.error));
+		this.errorCode = error.error;
 	}
 }
 
 export interface RemoteAPIError {
-	error?: number;
+	error: number;
 }

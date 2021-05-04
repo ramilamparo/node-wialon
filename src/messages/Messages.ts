@@ -16,7 +16,8 @@ import type {
 export class Messages extends RemoteAPI {
 	public loadInterval = <Response = MessagesDataFormat.MessageWithData>(
 		params: MessagesLoadIntervalParams
-	) => RemoteAPI.execute<
+	) =>
+		RemoteAPI.execute<
 			MessagesLoadIntervalParams,
 			MessagesLoadIntervalResponse<Response>
 		>(
@@ -33,12 +34,14 @@ export class Messages extends RemoteAPI {
 			this.options.host
 		);
 
-	public deleteMessage = (params: MessagesDeleteMessageParams) => RemoteAPI.execute<
+	public deleteMessage = (params: MessagesDeleteMessageParams) =>
+		RemoteAPI.execute<
 			MessagesDeleteMessageParams,
 			MessagesDeleteMessageResponse
 		>("messages/delete_message", params, this.sessionId, this.options.host);
 
-	public loadLast = <Response>(params: MessagesLoadLastParams) => RemoteAPI.execute<
+	public loadLast = <Response>(params: MessagesLoadLastParams) =>
+		RemoteAPI.execute<
 			MessagesLoadLastParams,
 			MessagesLoadLastResponse<Response>
 		>("messages/load_last", params, this.sessionId, this.options.host);

@@ -1,4 +1,4 @@
-import type { RemoteAPIError, ProfileField } from "..";
+import type { ProfileField } from "..";
 
 export interface Params {
 	vin: string;
@@ -15,7 +15,7 @@ export interface Error {
 	};
 }
 
-export interface Response extends RemoteAPIError {
+export interface Response {
 	vin_lookup_result: {
 		pflds: {
 			/** profile fields */

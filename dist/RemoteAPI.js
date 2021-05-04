@@ -63,7 +63,7 @@ RemoteAPI.execute = (svc, params, sid, url = exports.defaultHost) => __awaiter(v
         headers: Object.assign({}, formData.getHeaders()),
         timeout: 0
     });
-    if ("error" in res.data) {
+    if ("error" in res.data && res.data.error) {
         throw new WialonError_1.WialonError(res.data);
     }
     return res.data;

@@ -46,7 +46,8 @@ export class Wialon extends RemoteAPI {
 		return wialon;
 	};
 
-	public static useSession = (sessionId: string, host?: string) => new Wialon(sessionId, { host });
+	public static useSession = (sessionId: string, host?: string) =>
+		new Wialon(sessionId, { host });
 
 	public static useAuthHash = async (
 		params: CoreUseAuthHashParams,
@@ -74,7 +75,8 @@ export class Wialon extends RemoteAPI {
 		return new Wialon(response.eid, { host: params?.host, auth: response });
 	};
 
-	public execute = async <Params, Response>(svc: string, params: Params) => RemoteAPI.execute<Params, Response>(
+	public execute = async <Params, Response>(svc: string, params: Params) =>
+		RemoteAPI.execute<Params, Response>(
 			svc,
 			params,
 			this.sessionId,

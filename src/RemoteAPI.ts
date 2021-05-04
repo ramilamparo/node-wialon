@@ -90,7 +90,7 @@ export abstract class RemoteAPI {
 			}
 		);
 
-		if ("error" in res.data) {
+		if ("error" in res.data && res.data.error) {
 			throw new WialonError(res.data);
 		}
 		return res.data as Response;
