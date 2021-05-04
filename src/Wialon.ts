@@ -14,6 +14,7 @@ import type {
 	CoreDuplicateParams,
 	CoreDuplicateResponse
 } from "./core";
+import { RemoteAPIError, WialonError } from "./WialonError";
 
 export interface AvlEvtsResponse<Data> {
 	/** server time */
@@ -85,9 +86,12 @@ export class Wialon extends RemoteAPI {
 
 	public avlEvts = async <Data = unknown>() => {
 		const baseURL = new URL(this.options.host);
-		return axios.post<AvlEvtsResponse<Data>>(
+		const response = await axios.post<AvlEvtsResponse<Data> | RemoteAPIError>(
 			`${baseURL.protocol}//${baseURL.host}/avl_evts?sid=${this.sessionId}`
 		);
+		if ("error" in response.data) {
+			throw new WialonError(response.data);
+		}
 	};
 
 	public get Unit() {

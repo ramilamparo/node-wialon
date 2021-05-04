@@ -31,7 +31,7 @@ export declare class Wialon extends RemoteAPI {
         host?: string | undefined;
     }) | undefined) => Promise<Wialon>;
     execute: <Params, Response_1>(svc: string, params: Params) => Promise<Response_1>;
-    avlEvts: <Data = unknown>() => Promise<import("axios").AxiosResponse<AvlEvtsResponse<Data>>>;
+    avlEvts: <Data = unknown>() => Promise<void>;
     get Unit(): Unit;
     get Core(): Core;
     get Messages(): Messages;

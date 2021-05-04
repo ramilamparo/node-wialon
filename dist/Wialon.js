@@ -22,6 +22,7 @@ const Item_1 = require("./item/Item");
 const Report_1 = require("./report/Report");
 const Resource_1 = require("./resource/Resource");
 const RemoteAPI_1 = require("./RemoteAPI");
+const WialonError_1 = require("./WialonError");
 class Wialon extends RemoteAPI_1.RemoteAPI {
     constructor() {
         super(...arguments);
@@ -35,7 +36,10 @@ class Wialon extends RemoteAPI_1.RemoteAPI {
         });
         this.avlEvts = () => __awaiter(this, void 0, void 0, function* () {
             const baseURL = new URL(this.options.host);
-            return axios_1.default.post(`${baseURL.protocol}//${baseURL.host}/avl_evts?sid=${this.sessionId}`);
+            const response = yield axios_1.default.post(`${baseURL.protocol}//${baseURL.host}/avl_evts?sid=${this.sessionId}`);
+            if ("error" in response.data) {
+                throw new WialonError_1.WialonError(response.data);
+            }
         });
     }
     get Unit() {
