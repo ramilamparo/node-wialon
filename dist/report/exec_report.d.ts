@@ -9,6 +9,7 @@ export interface Params {
         flags: number;
     };
     reportTemplate?: object;
+    remoteExec?: 1;
 }
 export interface Response {
     /** report execution result */

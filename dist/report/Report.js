@@ -21,6 +21,12 @@ class Report extends RemoteAPI_1.RemoteAPI {
         this.selectResultRows = (params) => __awaiter(this, void 0, void 0, function* () {
             return RemoteAPI_1.RemoteAPI.execute("report/select_result_rows", params, this.sessionId, this.options.host);
         });
+        this.getReportStatus = () => __awaiter(this, void 0, void 0, function* () {
+            return RemoteAPI_1.RemoteAPI.execute("report/get_report_status", {}, this.sessionId, this.options.host);
+        });
+        this.applyReportResult = () => __awaiter(this, void 0, void 0, function* () {
+            return RemoteAPI_1.RemoteAPI.execute("report/apply_report_result", {}, this.sessionId, this.options.host);
+        });
     }
 }
 exports.Report = Report;

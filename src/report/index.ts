@@ -9,6 +9,8 @@ import {
 	Params as ReportExecReportParams,
 	Response as ReportExecReportResponse
 } from "./exec_report";
+import { Response as ReportGetReportStatusResponse } from "./get_report_status";
+import { Response as ReportApplyReportResultResponse } from "./apply_report_result";
 import { Report } from "./Report";
 
 export {
@@ -19,5 +21,7 @@ export {
 	ReportSelectResultRowsResponse,
 	ReportSelectResultRowsParamsConfigRow,
 	ReportSelectResultRowsParamsConfigRange,
-	ReportExecReportResponse
+	ReportExecReportResponse,
+	ReportGetReportStatusResponse,
+	ReportApplyReportResultResponse
 };

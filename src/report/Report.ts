@@ -8,6 +8,8 @@ import {
 	Params as ReportExecReportParams,
 	Response as ReportExecReportResponse
 } from "./exec_report";
+import { Response as ReportGetReportStatusResponse } from "./get_report_status";
+import { Response as ReportApplyReportResultResponse } from "./apply_report_result";
 
 export class Report extends RemoteAPI {
 	public cleanupResult = async () =>
@@ -26,4 +28,20 @@ export class Report extends RemoteAPI {
 			ReportSelectResultRowsParams,
 			ReportSelectResultRowsResponse
 		>("report/select_result_rows", params, this.sessionId, this.options.host);
+
+	public getReportStatus = async () =>
+		RemoteAPI.execute<{}, ReportGetReportStatusResponse>(
+			"report/get_report_status",
+			{},
+			this.sessionId,
+			this.options.host
+		);
+
+	public applyReportResult = async () =>
+		RemoteAPI.execute<{}, ReportApplyReportResultResponse>(
+			"report/apply_report_result",
+			{},
+			this.sessionId,
+			this.options.host
+		);
 }

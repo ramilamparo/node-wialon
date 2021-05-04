@@ -15,6 +15,8 @@ export type SVC =
 	| "report/exec_report"
 	| "report/cleanup_result"
 	| "report/select_result_rows"
+	| "report/apply_report_result"
+	| "report/get_report_status"
 	| "resource/update_driver"
 	/** Allows svc that are not from the list. https://github.com/Microsoft/TypeScript/issues/29729 */
 	| (string & { fromT?: any });
